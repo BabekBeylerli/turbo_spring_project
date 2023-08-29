@@ -22,6 +22,7 @@ public class Pictures {
     private Integer id;
     private String image;
     private Integer productsId;
+    private Integer sort;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

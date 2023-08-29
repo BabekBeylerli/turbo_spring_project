@@ -21,6 +21,7 @@ public class CarSalons {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String tittle;
+    private String type;
     private String email;
     private String password;
     private String description;
@@ -28,10 +29,9 @@ public class CarSalons {
     private String description2;
     private String logo;
     private String image;
-    private Integer stickerNumber;
+    private Integer productsCount;
     private Integer viewNumber;
     private String location;
-    private Integer cityId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
