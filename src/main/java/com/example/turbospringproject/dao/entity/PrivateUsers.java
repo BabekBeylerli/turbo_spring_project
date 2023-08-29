@@ -20,10 +20,9 @@ public class PrivateUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer phoneNumber;//buna bir daha baxmaq
+    private String phoneNumber;
     private String email;
     private double balance;
-    private Integer cityId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

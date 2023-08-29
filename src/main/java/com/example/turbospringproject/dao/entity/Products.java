@@ -21,6 +21,7 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String type;
     private String banType;
     private double march;
     private String marchType;
@@ -38,7 +39,12 @@ public class Products {
     private Integer seatsNumber;
     private String vinCode;
     private String description;
+    private Integer viewCount;
+    private String activeStatus;
+    private Integer carSalonId;
+    private Integer userId;
     private Integer modelId;
+    private Integer cityId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

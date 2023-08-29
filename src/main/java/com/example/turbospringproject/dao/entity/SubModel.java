@@ -10,17 +10,18 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Table(name = "brands")
 @Entity
+@Table(name = "sub_model")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Brands {
+public class SubModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private Integer modelId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
