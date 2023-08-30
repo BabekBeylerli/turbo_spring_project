@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class SuppliesDto {
+public class SupplyDto {
     private boolean alloyWheels;
     private boolean usa;
     private boolean hatch;

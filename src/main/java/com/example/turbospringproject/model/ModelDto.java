@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class PrivateUsersDto {
-    private String phoneNumber;
-    private double balance;
+public class ModelDto {
+    private String name;
 }

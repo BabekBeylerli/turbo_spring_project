@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class PicturesService {
+public class PictureService {
 private final PicturesRep picturesRep;
 
-    public PicturesService(PicturesRep picturesRep) {
+    public PictureService(PicturesRep picturesRep) {
         this.picturesRep = picturesRep;
     }
 }

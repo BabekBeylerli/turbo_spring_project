@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class ModelsService {
+public class ModelService {
     private final ModelsRep modelsRep;
 
-    public ModelsService(ModelsRep modelsRep) {
+    public ModelService(ModelsRep modelsRep) {
         this.modelsRep = modelsRep;
     }
 }

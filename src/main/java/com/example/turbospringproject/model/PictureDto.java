@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class PicturesDto {
+public class PictureDto {
     private String image;
 
 }

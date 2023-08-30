@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class ProductsService {
+public class ProductService {
     private final ProductsRep productsRep;
 
-    public ProductsService(ProductsRep productsRep) {
+    public ProductService(ProductsRep productsRep) {
         this.productsRep = productsRep;
     }
 }
