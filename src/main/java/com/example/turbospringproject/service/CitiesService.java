@@ -1,6 +1,6 @@
 package com.example.turbospringproject.service;
 
-import com.example.turbospringproject.dao.repositroies.CitiesRep;
+import com.example.turbospringproject.dao.repository.CitiesRep;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

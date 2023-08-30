@@ -5,5 +5,6 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public abstract class CarSalonsPhonesMapper {
-public static CarSalonsMapper mapper= Mappers.getMapper(CarSalonsMapper.class);
+    public static CarSalonsMapper mapper = Mappers.getMapper(CarSalonsMapper.class);
+    public
 }
