@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class CitiesDto {
+public class BrandDto {
     private String name;
+
 }

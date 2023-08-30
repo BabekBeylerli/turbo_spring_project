@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class BrandsDto {
-    private String name;
-
+public class CarSalonPhoneDto {
+private String number;
 }

@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class CarSalonsPhonesService {
+public class CarSalonPhoneService {
     private final CarSalonPhoneRepository carSalonsPhonesRep;
 
-    public CarSalonsPhonesService(CarSalonPhoneRepository carSalonsPhonesRep) {
+    public CarSalonPhoneService(CarSalonPhoneRepository carSalonsPhonesRep) {
         this.carSalonsPhonesRep = carSalonsPhonesRep;
     }
 }

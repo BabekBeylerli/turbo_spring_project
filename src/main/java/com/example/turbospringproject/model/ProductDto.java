@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class ProductsDto {
+public class ProductDto {
     private String type;
     private String banType;
     private double march;

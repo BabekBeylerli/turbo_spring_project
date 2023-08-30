@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class CitiesService {
+public class CityService {
     private final CitiesRep citiesRep;
 
-    public CitiesService(CitiesRep citiesRep) {
+    public CityService(CitiesRep citiesRep) {
         this.citiesRep = citiesRep;
     }
 }

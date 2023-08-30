@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class CarSalonsDto {
+public class CarSalonDto {
     private String tittle;
     private String type;
     private String description;
