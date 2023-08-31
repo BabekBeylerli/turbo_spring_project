@@ -15,5 +15,7 @@ public abstract class PictureMapper {
 
     public abstract PictureEntity mapDtoToEntity(PictureDto pictureDto);
 
+    public abstract PictureEntity mapDtoToEntity(PictureDto pictureDto, Integer pictureId);
+
     public abstract List<PictureDto> mapEntityToDtos(List<PictureEntity> pictureEntities);
 }

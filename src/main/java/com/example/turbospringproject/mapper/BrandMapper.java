@@ -14,6 +14,8 @@ public abstract class BrandMapper {
     public abstract BrandDto mapEntityToDto(BrandEntity brandEntity);
 
     public abstract BrandEntity mapDtoToEntity(BrandDto brandDto);
+
     public abstract List<BrandDto> mapEntityToDtos(List<BrandEntity> brandEntities);
-    public abstract BrandEntity mapDtoToEntity(BrandDto brandDto,Integer brandId);
+
+    public abstract BrandEntity mapDtoToEntity(BrandDto brandDto, Integer brandId);
 }

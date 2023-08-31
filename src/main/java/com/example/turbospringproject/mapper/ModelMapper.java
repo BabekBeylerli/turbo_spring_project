@@ -13,6 +13,8 @@ public abstract class ModelMapper {
 
     public abstract ModelDto mapEntityToDto(ModelEntity modelEntity);
 
+    public abstract ModelEntity mapDtoToEntity(ModelDto modelDto, Integer modelId);
+
     public abstract ModelEntity mapDtoToEntity(ModelDto modelDto);
 
     public abstract List<ModelDto> mapEntityToDtos(List<ModelEntity> modelEntities);

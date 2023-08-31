@@ -15,5 +15,7 @@ public abstract class SupplyMapper {
 
     public abstract SupplyEntity mapDtoToEntity(SupplyDto supplyDto);
 
+    public abstract SupplyEntity mapDtoToEntity(SupplyDto supplyDto, Integer supplyId);
+
     public abstract List<SupplyDto> mapEntityToDtos(List<SupplyEntity> supplyEntities);
 }
