@@ -1,11 +1,11 @@
 package com.example.turbospringproject.service;
 
-import com.example.turbospringproject.dao.repository.SubModelRep;
+import com.example.turbospringproject.dao.repository.SubModelRepository;
 
 public class SubModelService {
-    private final SubModelRep subModelRep;
+    private final SubModelRepository subModelRep;
 
-    public SubModelService(SubModelRep subModelRep) {
+    public SubModelService(SubModelRepository subModelRep) {
         this.subModelRep = subModelRep;
     }
 }

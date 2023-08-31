@@ -14,6 +14,7 @@ public abstract class CarSituationMapper {
     public abstract CarSituationDto mapEntityToDto(CarSituationEntity carSituationEntity);
 
     public abstract CarSituationEntity mapDtoToEntity(CarSituationDto carSituationDto);
+    public abstract CarSituationEntity mapDtoToEntity(CarSituationDto carSituationDto,Integer carSituationId);
 
     public abstract List<CarSituationDto> mapEntityToDtos(List<CarSituationEntity> carSituationEntities);
 }
