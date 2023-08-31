@@ -42,10 +42,6 @@ public class ProductEntity {
     private String description;
     private Integer viewCount;
     private String activeStatus;
-    private Integer carSalonId;
-    private Integer userId;
-    private Integer modelId;
-    private Integer cityId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

@@ -33,7 +33,6 @@ public class SupplyEntity {
     private boolean rearViewCamera;
     private boolean sideCurtains;
     private boolean seatVentilation;
-    private Integer productsId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

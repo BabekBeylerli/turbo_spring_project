@@ -25,7 +25,6 @@ public class CarSituationEntity {
     private boolean accident;
     private boolean credit;
     private boolean barter;
-    private Integer productsId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

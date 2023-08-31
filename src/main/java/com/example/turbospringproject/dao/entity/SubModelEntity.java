@@ -21,7 +21,6 @@ public class SubModelEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Integer modelId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
