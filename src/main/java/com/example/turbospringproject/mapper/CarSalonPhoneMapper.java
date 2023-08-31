@@ -14,6 +14,7 @@ public abstract class CarSalonPhoneMapper {
     public abstract CarSalonPhoneDto mapEntityToDto(CarSalonPhoneEntity carSalonPhoneEntity);
 
     public abstract CarSalonPhoneEntity mapDtoToEntity(CarSalonPhoneDto carSalonPhoneDto);
+    public abstract CarSalonPhoneEntity mapDtoToEntity(CarSalonPhoneDto carSalonPhoneDto,Integer carSalonPhoneId);
 
     public abstract List<CarSalonPhoneDto> mapEntityToDtos(List<CarSalonPhoneEntity> carSalonPhoneEntities);
 

@@ -5,5 +5,5 @@ import com.example.turbospringproject.dao.entity.SupplyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface SupplyRep extends JpaRepository<SupplyEntity, Integer> {
+public interface SupplyRepository extends JpaRepository<SupplyEntity, Integer> {
 }

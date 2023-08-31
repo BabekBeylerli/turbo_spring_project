@@ -14,6 +14,7 @@ public abstract class CityMapper {
     public abstract CityDto mapEntityToDto(CityEntity cityEntity);
 
     public abstract CityEntity mapDtoToEntity(CityDto cityDto);
+    public abstract CityEntity mapDtoToEntity(CityDto cityDto,Integer cityId);
 
     public abstract List<CityDto> mapEntityToDtos(List<CityEntity> cityEntities);
 }
