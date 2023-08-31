@@ -23,9 +23,11 @@ public class PictureEntity {
     private String image;
     private Integer sort;
     private Integer productsId;
-
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ProductEntity product;
 }

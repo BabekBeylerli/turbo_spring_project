@@ -25,5 +25,7 @@ public class ModelEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    private Integer brandsId;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private BrandEntity brand;
 }

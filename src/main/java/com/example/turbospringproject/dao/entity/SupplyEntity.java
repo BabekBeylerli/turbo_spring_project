@@ -38,5 +38,8 @@ public class SupplyEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
+    @OneToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ProductEntity product;
 
 }
