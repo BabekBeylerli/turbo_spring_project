@@ -11,5 +11,6 @@ private final BrandRepository brandsRep;
 
     public BrandService(BrandRepository brandsRep) {
         this.brandsRep = brandsRep;
+
     }
 }
