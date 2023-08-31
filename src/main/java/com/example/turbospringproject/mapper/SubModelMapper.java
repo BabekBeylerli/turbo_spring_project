@@ -15,5 +15,7 @@ public abstract class SubModelMapper {
 
     public abstract SubModelEntity mapDtoToEntity(SubModelDto subModelDto);
 
+    public abstract SubModelEntity mapDtoToEntity(SubModelDto subModelDto, Integer subModelId);
+
     public abstract List<SubModelDto> mapEntityToDtos(List<SubModelEntity> subModelEntities);
 }

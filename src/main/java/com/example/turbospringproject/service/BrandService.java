@@ -14,26 +14,31 @@ import java.util.List;
 @Service
 @Slf4j
 public class BrandService {
-private final BrandRepository brandRepository;
+    private final BrandRepository brandRepository;
 
-    public BrandService(BrandRepository brandsRepositoy) {
-        this.brandRepository = brandsRepositoy;
+    public BrandService(BrandRepository brandsRepository) {
+        this.brandRepository = brandsRepository;
     }
-    public List<BrandDto> getAllBrands(){
+
+    public List<BrandDto> getAllBrands() {
         return BrandMapper.mapper.mapEntityToDtos(brandRepository.findAll());
     }
-    public BrandDto getBrand(Integer brandId){
-        return BrandMapper.mapper.mapEntityToDto(brandRepository.findById(brandId).orElseThrow(()->
-            new RuntimeException("NotFound")
+
+    public BrandDto getBrand(Integer brandId) {
+        return BrandMapper.mapper.mapEntityToDto(brandRepository.findById(brandId).orElseThrow(() ->
+                new RuntimeException("Not Found")
         ));
     }
-    public void saveBrand(BrandDto brandDto){
-       brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto));
+
+    public void saveBrand(BrandDto brandDto) {
+        brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto));
     }
-    public void editBrand(BrandDto brandDto,Integer brandId){
-        brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto,brandId));
+
+    public void editBrand(BrandDto brandDto, Integer brandId) {
+        brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto, brandId));
     }
-    public void deleteBrand(Integer brandId){
+
+    public void deleteBrand(Integer brandId) {
         brandRepository.deleteById(brandId);
     }
 }

@@ -33,6 +33,7 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct-jdk8:1.2.0.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.2.0.Final'
 	implementation 'org.modelmapper:modelmapper:2.1.1'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 }
 
 tasks.named('test') {

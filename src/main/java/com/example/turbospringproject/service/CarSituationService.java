@@ -7,6 +7,8 @@ import com.example.turbospringproject.model.CarSituationDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class CarSituationService {
@@ -16,18 +18,26 @@ public class CarSituationService {
 
         this.carSituationRepository = carSituationRepository;
     }
-    public CarSituationDto getCarSituation(Integer carSituationId){
-        return CarSituationMapper.mapper.mapEntityToDto(carSituationRepository.findById(carSituationId).orElseThrow(()->
-                new RuntimeException("Not Found")
-                ));
+
+    public List<CarSituationDto> getAllCarSituations() {
+        return CarSituationMapper.mapper.mapEntityToDtos(carSituationRepository.findAll());
     }
-    public void saveCarSituation(CarSituationDto carSituationDto){
+
+    public CarSituationDto getCarSituation(Integer carSituationId) {
+        return CarSituationMapper.mapper.mapEntityToDto(carSituationRepository.findById(carSituationId).orElseThrow(() ->
+                new RuntimeException("Not Found")
+        ));
+    }
+
+    public void saveCarSituation(CarSituationDto carSituationDto) {
         carSituationRepository.save(CarSituationMapper.mapper.mapDtoToEntity(carSituationDto));
     }
-    public void editCarSituation(CarSituationDto carSituationDto,Integer carSituationId){
-        carSituationRepository.save(CarSituationMapper.mapper.mapDtoToEntity(carSituationDto,carSituationId));
+
+    public void editCarSituation(CarSituationDto carSituationDto, Integer carSituationId) {
+        carSituationRepository.save(CarSituationMapper.mapper.mapDtoToEntity(carSituationDto, carSituationId));
     }
-    public void deleteCarSituation(Integer carSituationId){
+
+    public void deleteCarSituation(Integer carSituationId) {
         carSituationRepository.deleteById(carSituationId);
 
     }
