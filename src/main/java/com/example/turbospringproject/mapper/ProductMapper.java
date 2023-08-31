@@ -5,6 +5,8 @@ import com.example.turbospringproject.model.ProductDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public abstract class ProductMapper {
     public static ProductMapper mapper = Mappers.getMapper(ProductMapper.class);
@@ -12,4 +14,6 @@ public abstract class ProductMapper {
     public abstract ProductDto mapEntityToDto(ProductEntity productEntity);
 
     public abstract ProductEntity mapDtoToEntity(ProductDto productDto);
+
+    public abstract List<ProductDto> mapEntityToDtos(List<ProductEntity> productEntities);
 }
