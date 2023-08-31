@@ -22,7 +22,6 @@ public class PictureEntity {
     private Integer id;
     private String image;
     private Integer sort;
-    private Integer productsId;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
