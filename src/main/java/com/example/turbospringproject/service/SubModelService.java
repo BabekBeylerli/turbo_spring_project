@@ -20,8 +20,11 @@ public class SubModelService {
         this.subModelRepository = subModelRepository;
     }
 
-    public List<SubModelDto> getAllSubModels() {
-        return SubModelMapper.mapper.mapEntityToDtos(subModelRepository.findAll());
+    public List<SubModelDto> getAllSubModel() {
+        log.info("ActionLog.getAllSubModel.start");
+        List<SubModelDto> subModelDtos = SubModelMapper.mapper.mapEntityToDtos(subModelRepository.findAll());
+        log.info("ActionLog.getAllSubModel.end");
+        return subModelDtos;
     }
 
     public SubModelDto getSubModel(Integer subModelId) {

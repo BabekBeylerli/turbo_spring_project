@@ -21,7 +21,11 @@ public class CarSalonPhoneService {
     }
 
     public List<CarSalonPhoneDto> getAllCarSalonPhone() {
-        return CarSalonPhoneMapper.mapper.mapEntityToDtos(carSalonPhoneRepository.findAll());
+        log.info("ActionLog.getAllCarSalonPhone.start");
+        List<CarSalonPhoneDto> carSalonPhoneDtos =
+                CarSalonPhoneMapper.mapper.mapEntityToDtos(carSalonPhoneRepository.findAll());
+        log.info("ActionLog.getAllCarSalonPhone.end");
+        return carSalonPhoneDtos;
     }
 
     public CarSalonPhoneDto getCarSalonPhone(Integer carSalonPhoneId) {

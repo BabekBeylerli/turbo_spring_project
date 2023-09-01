@@ -2,8 +2,10 @@ package com.example.turbospringproject.service;
 
 import com.example.turbospringproject.dao.entity.CityEntity;
 import com.example.turbospringproject.dao.repository.CityRepository;
+import com.example.turbospringproject.mapper.CarSituationMapper;
 import com.example.turbospringproject.mapper.CityMapper;
 import com.example.turbospringproject.mapper.ModelMapper;
+import com.example.turbospringproject.model.CarSituationDto;
 import com.example.turbospringproject.model.CityDto;
 import com.example.turbospringproject.model.ModelDto;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +23,11 @@ public class CityService {
     }
 
     public List<CityDto> getAllCity() {
-        return CityMapper.mapper.mapEntityToDtos(cityRepository.findAll());
+        log.info("ActionLog.getAllCity.start");
+        List<CityDto> cityDtos =
+                CityMapper.mapper.mapEntityToDtos(cityRepository.findAll());
+        log.info("ActionLog.getAllCity.end");
+        return cityDtos;
     }
 
     public CityDto getCity(Integer cityId) {
