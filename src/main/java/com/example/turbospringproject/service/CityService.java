@@ -1,5 +1,6 @@
 package com.example.turbospringproject.service;
 
+import com.example.turbospringproject.dao.entity.CityEntity;
 import com.example.turbospringproject.dao.repository.CityRepository;
 import com.example.turbospringproject.mapper.CityMapper;
 import com.example.turbospringproject.mapper.ModelMapper;
@@ -24,20 +25,31 @@ public class CityService {
     }
 
     public CityDto getCity(Integer cityId) {
-        return CityMapper.mapper.mapEntityToDto(cityRepository.findById(cityId).orElseThrow(() ->
-                new RuntimeException("Not found")
-        ));
+        log.info("ActionLog.getCity.start");
+        CityEntity cityEntity =
+                cityRepository.findById(cityId).orElseThrow(() ->
+                        new RuntimeException("Not found")
+                );
+        log.info("ActionLog.getCity.end");
+        return CityMapper.mapper.mapEntityToDto(cityEntity);
+
     }
 
     public void saveCity(CityDto cityDto) {
+        log.info("ActionLog.saveCity.start");
         cityRepository.save(CityMapper.mapper.mapDtoToEntity(cityDto));
+        log.info("ActionLog.saveCity.end");
     }
 
     public void editCity(CityDto cityDto, Integer cityId) {
+        log.info("ActionLog.editCity.start");
         cityRepository.save(CityMapper.mapper.mapDtoToEntity(cityDto, cityId));
+        log.info("ActionLog.editCity.end");
     }
 
     public void deleteCity(Integer cityId) {
+        log.info("ActionLog.deleteCity.start");
         cityRepository.deleteById(cityId);
+        log.info("ActionLog.deleteCity.end");
     }
 }

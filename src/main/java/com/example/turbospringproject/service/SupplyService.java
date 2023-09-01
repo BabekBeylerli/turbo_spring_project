@@ -1,5 +1,6 @@
 package com.example.turbospringproject.service;
 
+import com.example.turbospringproject.dao.entity.SupplyEntity;
 import com.example.turbospringproject.dao.repository.SupplyRepository;
 import com.example.turbospringproject.mapper.SupplyMapper;
 import com.example.turbospringproject.model.SupplyDto;
@@ -22,21 +23,32 @@ public class SupplyService {
     }
 
     public SupplyDto getSupply(Integer supplyId) {
-        return SupplyMapper.mapper.mapEntityToDto(supplyRepository.findById(supplyId).orElseThrow(() ->
-                new RuntimeException("Not Found"))
-        );
+        log.info("ActionLog.getSupply.start");
+        SupplyEntity supplyEntity =
+                supplyRepository.findById(supplyId).orElseThrow(() ->
+                        new RuntimeException("Not Found")
+                );
+        log.info("ActionLog.getSupply.end");
+        return SupplyMapper.mapper.mapEntityToDto(supplyEntity);
     }
 
     public void saveSupply(SupplyDto supplyDto) {
+        log.info("ActionLog.saveSupply.start");
         supplyRepository.save(SupplyMapper.mapper.mapDtoToEntity(supplyDto));
+        log.info("ActionLog.saveSupply.end");
+
     }
 
     public void editSupply(SupplyDto supplyDto, Integer supplyId) {
+        log.info("ActionLog.editSupply.start");
         supplyRepository.save(SupplyMapper.mapper.mapDtoToEntity(supplyDto, supplyId));
+        log.info("ActionLog.editSupply.end");
     }
 
     public void deleteSupply(Integer supplyId) {
+        log.info("ActionLog.deleteSupply.start");
         supplyRepository.deleteById(supplyId);
+        log.info("ActionLog.deleteSupply.end");
     }
 
 }

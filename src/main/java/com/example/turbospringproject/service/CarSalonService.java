@@ -1,9 +1,11 @@
 package com.example.turbospringproject.service;
 
+import com.example.turbospringproject.dao.entity.CarSalonEntity;
 import com.example.turbospringproject.dao.repository.BrandRepository;
 import com.example.turbospringproject.dao.repository.CarSalonRepository;
 import com.example.turbospringproject.mapper.BrandMapper;
 import com.example.turbospringproject.mapper.CarSalonMapper;
+import com.example.turbospringproject.mapper.CarSalonPhoneMapper;
 import com.example.turbospringproject.model.BrandDto;
 import com.example.turbospringproject.model.CarSalonDto;
 import lombok.extern.slf4j.Slf4j;
@@ -20,21 +22,36 @@ public class CarSalonService {
 
         this.carSalonsRepository = carSalonsRepository;
     }
-    public List<CarSalonDto> getAllCarSalon(){
+
+    public List<CarSalonDto> getAllCarSalon() {
         return CarSalonMapper.mapper.mapEntityToDtos(carSalonsRepository.findAll());
     }
-    public CarSalonDto getCarSalon(Integer carSalonId){
-        return CarSalonMapper.mapper.mapEntityToDto(carSalonsRepository.findById(carSalonId).orElseThrow(()->
-                new RuntimeException("NotFound")
-        ));
+
+    public CarSalonDto getCarSalon(Integer carSalonId) {
+        log.info("ActionLog.getCarSalon.start");
+        CarSalonEntity carSalonEntity =
+                carSalonsRepository.findById(carSalonId).orElseThrow(() ->
+                        new RuntimeException("NotFound")
+                );
+        log.info("ActionLog.getCarSalon.end");
+        return CarSalonMapper.mapper.mapEntityToDto(carSalonEntity);
     }
-    public void saveCarSalon(CarSalonDto carSalonDto){
+
+    public void saveCarSalon(CarSalonDto carSalonDto) {
+        log.info("ActionLog.saveCarSalon.start");
         carSalonsRepository.save(CarSalonMapper.mapper.mapDtoToEntity(carSalonDto));
+        log.info("ActionLog.saveCarSalon.end");
     }
-    public void editCarSalon(CarSalonDto carSalonDto,Integer carSalonId){
-        carSalonsRepository.save(CarSalonMapper.mapper.mapDtoToEntity(carSalonDto,carSalonId));
+
+    public void editCarSalon(CarSalonDto carSalonDto, Integer carSalonId) {
+        log.info("ActionLog.editCarSalon.start");
+        carSalonsRepository.save(CarSalonMapper.mapper.mapDtoToEntity(carSalonDto, carSalonId));
+        log.info("ActionLog.editCarSalon.end");
     }
-    public void deleteCarSalon(Integer carSalonId){
+
+    public void deleteCarSalon(Integer carSalonId) {
+        log.info("ActionLog.deleteCarSalon.start");
         carSalonsRepository.deleteById(carSalonId);
+        log.info("ActionLog.deleteCarSalon.end");
     }
 }
