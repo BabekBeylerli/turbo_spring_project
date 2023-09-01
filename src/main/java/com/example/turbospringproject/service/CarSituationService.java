@@ -4,6 +4,7 @@ import com.example.turbospringproject.dao.entity.CarSituationEntity;
 import com.example.turbospringproject.dao.repository.CarSituationRepository;
 import com.example.turbospringproject.mapper.CarSalonMapper;
 import com.example.turbospringproject.mapper.CarSituationMapper;
+import com.example.turbospringproject.model.CarSalonDto;
 import com.example.turbospringproject.model.CarSituationDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,13 @@ public class CarSituationService {
         this.carSituationRepository = carSituationRepository;
     }
 
-    public List<CarSituationDto> getAllCarSituations() {
-        return CarSituationMapper.mapper.mapEntityToDtos(carSituationRepository.findAll());
+    public List<CarSituationDto> getAllCarSituation() {
+        log.info("ActionLog.getAllCarSituation.start");
+        List<CarSituationDto> carSituationDtos =
+                CarSituationMapper.mapper.mapEntityToDtos(carSituationRepository.findAll());
+        log.info("ActionLog.getAllCarSituation.end");
+        return carSituationDtos;
     }
-
     public CarSituationDto getCarSituation(Integer carSituationId) {
      log.info("ActionLog.getCarSituation.start");
         CarSituationEntity carSituationEntity=

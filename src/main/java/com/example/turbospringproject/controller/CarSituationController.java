@@ -17,7 +17,7 @@ public class CarSituationController {
     }
     @GetMapping
     public List<CarSituationDto> getAllCarSituation(){
-        return carSituationService.getAllCarSituations();
+        return carSituationService.getAllCarSituation();
     }
     @GetMapping("{carSituationId}")
     public CarSituationDto getCarSituation(@PathVariable Integer carSituationId){

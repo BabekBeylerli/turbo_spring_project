@@ -19,10 +19,10 @@ public class PictureService {
     }
 
 
-    public List<PictureDto> getAllPictures() {
-        log.info("ActionLog.getAllPictures.start");
+    public List<PictureDto> getAllPicture() {
+        log.info("ActionLog.getAllPicture.start");
         List<PictureDto> pictureDtos = PictureMapper.mapper.mapEntityToDtos(picturesRepository.findAll());
-        log.info("ActionLog.getAllPictures.end");
+        log.info("ActionLog.getAllPicture.end");
         return pictureDtos;
     }
 

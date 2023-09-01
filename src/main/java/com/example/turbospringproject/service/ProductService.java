@@ -19,8 +19,12 @@ public class ProductService {
     }
 
 
-    public List<ProductDto> getAllProducts() {
-        return ProductMapper.mapper.mapEntityToDtos(productsRepository.findAll());
+    public List<ProductDto> getAllProduct() {
+        log.info("ActionLog.getAllProduct.start");
+        List<ProductDto> productDtos =
+                ProductMapper.mapper.mapEntityToDtos(productsRepository.findAll());
+        log.info("ActionLog.getAllProduct.end");
+        return productDtos;
     }
 
     public ProductDto getProduct(Integer productId) {

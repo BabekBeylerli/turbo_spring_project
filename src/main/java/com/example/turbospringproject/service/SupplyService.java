@@ -18,8 +18,11 @@ public class SupplyService {
         this.supplyRepository = supplyRepository;
     }
 
-    public List<SupplyDto> getAllSupplies() {
-        return SupplyMapper.mapper.mapEntityToDtos(supplyRepository.findAll());
+    public List<SupplyDto> getAllSupply() {
+        log.info("ActionLog.getAllSupply.start");
+        List<SupplyDto> supplyDtos = SupplyMapper.mapper.mapEntityToDtos(supplyRepository.findAll());
+        log.info("ActionLog.getAllSupply.end");
+        return supplyDtos;
     }
 
     public SupplyDto getSupply(Integer supplyId) {

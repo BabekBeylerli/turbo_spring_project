@@ -20,7 +20,7 @@ public class BrandService {
         this.brandRepository = brandsRepository;
     }
 
-    public List<BrandDto> getAllBrands() {
+    public List<BrandDto> getAllBrand() {
         log.info("ActionLog.getAllBrands.start");
         List<BrandDto> brandDtos = BrandMapper.mapper.mapEntityToDtos(brandRepository.findAll());
         log.info("ActionLog.getAllBrands.end");

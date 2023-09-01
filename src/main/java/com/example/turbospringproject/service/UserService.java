@@ -18,8 +18,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserDto> getAllUsers() {
-        return UserMapper.mapper.mapEntityToDtos(userRepository.findAll());
+    public List<UserDto> getAllUser() {
+        log.info("ActionLog.getAllUser.start");
+        List<UserDto> userDtos = UserMapper.mapper.mapEntityToDtos(userRepository.findAll());
+        log.info("ActionLog.getAllUser.end");
+        return userDtos;
     }
 
     public UserDto getUser(Integer userId) {

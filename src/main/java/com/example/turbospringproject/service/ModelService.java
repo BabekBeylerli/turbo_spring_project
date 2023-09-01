@@ -2,7 +2,9 @@ package com.example.turbospringproject.service;
 
 import com.example.turbospringproject.dao.entity.ModelEntity;
 import com.example.turbospringproject.dao.repository.ModelRepository;
+import com.example.turbospringproject.mapper.CityMapper;
 import com.example.turbospringproject.mapper.ModelMapper;
+import com.example.turbospringproject.model.CityDto;
 import com.example.turbospringproject.model.ModelDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,11 @@ public class ModelService {
     }
 
     public List<ModelDto> getAllModel() {
-        return ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll());
+        log.info("ActionLog.getAllModel.start");
+        List<ModelDto> modelDtos =
+                ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll());
+        log.info("ActionLog.getAllModel.end");
+        return modelDtos;
     }
 
     public ModelDto getModel(Integer modelId) {

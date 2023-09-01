@@ -16,7 +16,7 @@ public class BrandController {
     }
     @GetMapping
     public List<BrandDto> getAllBrand(){
-        return brandsService.getAllBrands();
+        return brandsService.getAllBrand();
     }
     @GetMapping("{brandId}")
     public BrandDto getBrand(@PathVariable Integer brandId){

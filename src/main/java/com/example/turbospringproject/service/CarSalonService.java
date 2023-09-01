@@ -8,6 +8,7 @@ import com.example.turbospringproject.mapper.CarSalonMapper;
 import com.example.turbospringproject.mapper.CarSalonPhoneMapper;
 import com.example.turbospringproject.model.BrandDto;
 import com.example.turbospringproject.model.CarSalonDto;
+import com.example.turbospringproject.model.CarSalonPhoneDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,11 @@ public class CarSalonService {
     }
 
     public List<CarSalonDto> getAllCarSalon() {
-        return CarSalonMapper.mapper.mapEntityToDtos(carSalonsRepository.findAll());
+        log.info("ActionLog.getAllCarSalon.start");
+        List<CarSalonDto> carSalonDtos =
+                CarSalonMapper.mapper.mapEntityToDtos(carSalonsRepository.findAll());
+        log.info("ActionLog.getAllCarSalon.end");
+        return carSalonDtos;
     }
 
     public CarSalonDto getCarSalon(Integer carSalonId) {
