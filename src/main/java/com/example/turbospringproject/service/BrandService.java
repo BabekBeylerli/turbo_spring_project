@@ -21,24 +21,38 @@ public class BrandService {
     }
 
     public List<BrandDto> getAllBrands() {
-        return BrandMapper.mapper.mapEntityToDtos(brandRepository.findAll());
+        log.info("ActionLog.getAllBrands.start");
+        List<BrandDto> brandDtos = BrandMapper.mapper.mapEntityToDtos(brandRepository.findAll());
+        log.info("ActionLog.getAllBrands.end");
+        return brandDtos;
     }
 
     public BrandDto getBrand(Integer brandId) {
-        return BrandMapper.mapper.mapEntityToDto(brandRepository.findById(brandId).orElseThrow(() ->
-                new RuntimeException("Not Found")
-        ));
+        log.info("ActionLog.getBrand.start");
+        BrandEntity brandEntity =
+                brandRepository.findById(brandId).orElseThrow(() ->
+                        new RuntimeException("Not Found")
+
+                );
+        log.info("ActionLog.getBrand.end");
+        return BrandMapper.mapper.mapEntityToDto(brandEntity);
     }
 
     public void saveBrand(BrandDto brandDto) {
+        log.info("ActionLog.saveBrand.start");
         brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto));
+        log.info("ActionLog.saveBrand.end");
     }
 
     public void editBrand(BrandDto brandDto, Integer brandId) {
+        log.info("ActionLog.editBrand.start");
         brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto, brandId));
+        log.info("ActionLog.editBrand.end4");
     }
 
     public void deleteBrand(Integer brandId) {
+        log.info("ActionLog.deleteBrand.start");
         brandRepository.deleteById(brandId);
+        log.info("ActionLog.deleteBrand.end");
     }
 }

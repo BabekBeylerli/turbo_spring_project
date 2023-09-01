@@ -1,5 +1,6 @@
 package com.example.turbospringproject.service;
 
+import com.example.turbospringproject.dao.entity.PictureEntity;
 import com.example.turbospringproject.dao.repository.PicturesRepository;
 import com.example.turbospringproject.mapper.PictureMapper;
 import com.example.turbospringproject.model.PictureDto;
@@ -19,25 +20,37 @@ public class PictureService {
 
 
     public List<PictureDto> getAllPictures() {
-        return PictureMapper.mapper.mapEntityToDtos(picturesRepository.findAll());
+        log.info("ActionLog.getAllPictures.start");
+        List<PictureDto> pictureDtos = PictureMapper.mapper.mapEntityToDtos(picturesRepository.findAll());
+        log.info("ActionLog.getAllPictures.end");
+        return pictureDtos;
     }
 
     public PictureDto getPicture(Integer pictureId) {
-        return PictureMapper.mapper.mapEntityToDto(picturesRepository.findById(pictureId).orElseThrow(() ->
+        log.info("ActionLog.getPicture.start");
+        PictureEntity pictureEntity = picturesRepository.findById(pictureId).orElseThrow(() ->
                 new RuntimeException("Not Found")
-        ));
+        );
+        log.info("ActionLog.getPicture.end");
+        return PictureMapper.mapper.mapEntityToDto(pictureEntity);
     }
 
     public void savePicture(PictureDto pictureDto) {
+        log.info("ActionLog.savePicture.start");
         picturesRepository.save(PictureMapper.mapper.mapDtoToEntity(pictureDto));
+        log.info("ActionLog.savePicture.end");
     }
 
     public void editPicture(PictureDto pictureDto, Integer pictureId) {
+        log.info("ActionLog.editPicture.start");
         picturesRepository.save(PictureMapper.mapper.mapDtoToEntity(pictureDto, pictureId));
+        log.info("ActionLog.editPicture.end");
     }
 
     public void deletePicture(Integer pictureId) {
+        log.info("ActionLog.deletePicture.start");
         picturesRepository.deleteById(pictureId);
+        log.info("ActionLog.deletePicture.end");
     }
 
 }

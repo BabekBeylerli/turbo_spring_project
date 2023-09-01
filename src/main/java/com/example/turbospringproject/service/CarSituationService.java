@@ -1,5 +1,6 @@
 package com.example.turbospringproject.service;
 
+import com.example.turbospringproject.dao.entity.CarSituationEntity;
 import com.example.turbospringproject.dao.repository.CarSituationRepository;
 import com.example.turbospringproject.mapper.CarSalonMapper;
 import com.example.turbospringproject.mapper.CarSituationMapper;
@@ -24,21 +25,31 @@ public class CarSituationService {
     }
 
     public CarSituationDto getCarSituation(Integer carSituationId) {
-        return CarSituationMapper.mapper.mapEntityToDto(carSituationRepository.findById(carSituationId).orElseThrow(() ->
-                new RuntimeException("Not Found")
-        ));
+     log.info("ActionLog.getCarSituation.start");
+        CarSituationEntity carSituationEntity=
+                carSituationRepository.findById(carSituationId).orElseThrow(() ->
+                        new RuntimeException("Not Found")
+                );
+        log.info("ActionLog.getCarSituation.end");
+        return CarSituationMapper.mapper.mapEntityToDto(carSituationEntity);
     }
 
     public void saveCarSituation(CarSituationDto carSituationDto) {
+        log.info("ActionLog.saveCarSituation.start");
         carSituationRepository.save(CarSituationMapper.mapper.mapDtoToEntity(carSituationDto));
+        log.info("ActionLog.saveCarSituation.end");
     }
 
     public void editCarSituation(CarSituationDto carSituationDto, Integer carSituationId) {
+        log.info("ActionLog.editCarSituation.start");
         carSituationRepository.save(CarSituationMapper.mapper.mapDtoToEntity(carSituationDto, carSituationId));
+        log.info("ActionLog.editCarSituation.end");
     }
 
     public void deleteCarSituation(Integer carSituationId) {
+        log.info("ActionLog.deleteCarSituation.start");
         carSituationRepository.deleteById(carSituationId);
+        log.info("ActionLog.deleteCarSituation.end");
 
     }
 }
