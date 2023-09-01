@@ -1,15 +1,38 @@
 package com.example.turbospringproject.controller;
 
+import com.example.turbospringproject.model.CarSalonPhoneDto;
+import com.example.turbospringproject.model.CityDto;
 import com.example.turbospringproject.service.CityService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/cities")
 public class CityController {
-    private final CityService citiesService;
+    private final CityService cityService;
 
-    public CityController(CityService citiesService) {
-        this.citiesService = citiesService;
+    public CityController(CityService cityService) {
+        this.cityService = cityService;
+    }
+    @GetMapping
+    public List<CityDto> getAllCity(){
+        return cityService.getAllCity();
+    }
+    @GetMapping("{cityId}")
+    public CityDto getCity(@PathVariable Integer cityId){
+        return cityService.getCity(cityId);
+    }
+    @PostMapping
+    public void saveCity(@RequestBody CityDto cityDto){
+        cityService.saveCity(cityDto);
+    }
+    @PutMapping
+    public void updateCity(@RequestBody CityDto cityDto,@PathVariable Integer cityId){
+        cityService.editCity(cityDto,cityId);
+    }
+    @DeleteMapping
+    public void deleteCity(@PathVariable Integer cityId){
+        cityService.deleteCity(cityId);
     }
 }

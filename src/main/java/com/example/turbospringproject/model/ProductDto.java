@@ -1,9 +1,18 @@
 package com.example.turbospringproject.model;
 
+import com.example.turbospringproject.dao.entity.CarSalonEntity;
+import com.example.turbospringproject.dao.entity.CityEntity;
+import com.example.turbospringproject.dao.entity.ModelEntity;
+import com.example.turbospringproject.dao.entity.UserEntity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,10 +21,10 @@ import lombok.NoArgsConstructor;
 public class ProductDto {
     private String type;
     private String banType;
-    private double march;
+    private Double march;
     private String marchType;
     private String color;
-    private double price;
+    private Double price;
     private String priceType;
     private Integer owners;
     private String fuelType;
@@ -30,4 +39,12 @@ public class ProductDto {
     private String description;
     private Integer viewCount;
     private String activeStatus;
+    private LocalDate updateAt;
+    private LocalDate createdAt;
+    private CityEntity city;
+    private CarSalonEntity car;
+    private UserEntity user;
+    private ModelEntity model;
+
+
 }
