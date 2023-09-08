@@ -26,8 +26,6 @@ public class CityEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-//    @OneToMany
-//    private List<ProductEntity> product;
-
-
+    @OneToMany(mappedBy = "city")
+    private List<ProductEntity> product;
 }

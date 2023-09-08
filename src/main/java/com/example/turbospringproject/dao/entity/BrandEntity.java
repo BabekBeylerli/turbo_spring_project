@@ -7,8 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.boot.Banner;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name = "brands")
 @Entity
@@ -25,4 +27,6 @@ public class BrandEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
+    @OneToMany(mappedBy = "brand")
+    private List<ModelEntity> models;
 }

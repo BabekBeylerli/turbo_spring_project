@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name = "car_salons")
 @Entity
@@ -36,5 +37,9 @@ public class CarSalonEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
+    @OneToMany(mappedBy = "car")
+    private List<ProductEntity> product;
+    @OneToMany
+    private List<CarSalonPhoneEntity> phones;
 
 }

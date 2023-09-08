@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class UserService {
+public class UserService  {
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {

@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.repository.cdi.Eager;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name = "products")
 @Entity
@@ -57,7 +58,13 @@ public class ProductEntity {
     private UserEntity user;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
-    private ModelEntity model;
+    private SubModelEntity model;
+    @OneToMany(mappedBy = "product")
+    private List<CarSituationEntity> carSituations;
+    @OneToOne(mappedBy = "product")
+    private SupplyEntity supply;
+    @OneToMany(mappedBy = "product")
+    private List<PictureEntity> pictures;
 
 
 }

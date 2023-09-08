@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "sub_model")
@@ -28,4 +29,6 @@ public class SubModelEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
     private ModelEntity model;
+    @OneToMany(mappedBy = "model")
+    private List<ProductEntity> product;
 }

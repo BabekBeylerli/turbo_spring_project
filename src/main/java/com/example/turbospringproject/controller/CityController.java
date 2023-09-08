@@ -15,24 +15,29 @@ public class CityController {
     public CityController(CityService cityService) {
         this.cityService = cityService;
     }
+
     @GetMapping
-    public List<CityDto> getAllCity(){
+    public List<CityDto> getAllCity() {
         return cityService.getAllCity();
     }
+
     @GetMapping("{cityId}")
-    public CityDto getCity(@PathVariable Integer cityId){
+    public CityDto getCity(@PathVariable Integer cityId) {
         return cityService.getCity(cityId);
     }
+
     @PostMapping
-    public void saveCity(@RequestBody CityDto cityDto){
+    public void saveCity(@RequestBody CityDto cityDto) {
         cityService.saveCity(cityDto);
     }
+
     @PutMapping
-    public void updateCity(@RequestBody CityDto cityDto,@PathVariable Integer cityId){
-        cityService.editCity(cityDto,cityId);
+    public void updateCity(@RequestBody CityDto cityDto, @PathVariable Integer cityId) {
+        cityService.editCity(cityDto, cityId);
     }
+
     @DeleteMapping
-    public void deleteCity(@PathVariable Integer cityId){
+    public void deleteCity(@PathVariable Integer cityId) {
         cityService.deleteCity(cityId);
     }
 }
