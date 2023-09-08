@@ -1,18 +1,17 @@
 package com.example.turbospringproject.model;
 
-import com.example.turbospringproject.dao.entity.CarSalonEntity;
-import com.example.turbospringproject.dao.entity.CityEntity;
-import com.example.turbospringproject.dao.entity.ModelEntity;
-import com.example.turbospringproject.dao.entity.UserEntity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.example.turbospringproject.dao.entity.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,12 +38,20 @@ public class ProductDto {
     private String description;
     private Integer viewCount;
     private String activeStatus;
-    private LocalDate updateAt;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updateAt;
+
     private CityEntity city;
+
     private CarSalonEntity car;
+
     private UserEntity user;
-    private ModelEntity model;
+
+    private SubModelEntity model;
+    private List<CarSituationEntity> carSituations;
+    private SupplyEntity supply;
+    private List<PictureEntity> pictures;
 
 
 }

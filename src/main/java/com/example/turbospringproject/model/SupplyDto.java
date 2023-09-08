@@ -1,5 +1,8 @@
 package com.example.turbospringproject.model;
 
+import com.example.turbospringproject.dao.entity.ProductEntity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,4 +27,5 @@ public class SupplyDto {
     private boolean sideCurtains;
     private boolean seatVentilation;
 
+    private ProductEntity product;
 }
