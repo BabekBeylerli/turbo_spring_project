@@ -3,6 +3,7 @@ package com.example.turbospringproject.dao.handler;
 import com.example.turbospringproject.exception.NotFoundException;
 import com.example.turbospringproject.model.ExceptionDto;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,6 +19,11 @@ public class ErrorHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public ExceptionDto handler(Exception exception) {
+        return new ExceptionDto(exception.getMessage());
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ExceptionDto handler(MethodArgumentNotValidException exception) {
         return new ExceptionDto(exception.getMessage());
     }
 
