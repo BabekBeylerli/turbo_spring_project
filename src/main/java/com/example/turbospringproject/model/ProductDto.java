@@ -30,7 +30,7 @@ public class ProductDto {
     private String gear;
     private String gearBox;
     private Integer year;
-    private Integer engineVolume;
+    private Double engineVolume;
     private Integer enginePower;
     private String market;
     private Integer seatsNumber;
