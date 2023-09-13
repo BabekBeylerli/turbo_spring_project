@@ -3,6 +3,7 @@ package com.example.turbospringproject.controller;
 import com.example.turbospringproject.model.UserDto;
 import com.example.turbospringproject.service.UserService;
 import org.springframework.data.relational.core.sql.In;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +18,14 @@ public class UserController {
     }
 
 
-    @GetMapping
+    @GetMapping("/get")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public List<UserDto> getAllUser() {
         return userService.getAllUser();
     }
 
-    @GetMapping("{userId}")
+    @GetMapping("/user/{userId}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public UserDto getUser(@PathVariable Integer userId) {
         return userService.getUser(userId);
     }
