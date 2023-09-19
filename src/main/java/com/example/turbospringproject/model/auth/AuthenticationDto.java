@@ -1,4 +1,4 @@
-package com.example.turbospringproject.model;
+package com.example.turbospringproject.model.auth;
 
 import lombok.*;
 

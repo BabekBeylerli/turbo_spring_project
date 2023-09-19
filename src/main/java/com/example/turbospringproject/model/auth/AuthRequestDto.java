@@ -1,4 +1,4 @@
-package com.example.turbospringproject.model;
+package com.example.turbospringproject.model.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthRequestDto {
-    private String email;
+    private String phoneNumber;
     private String password;
 }
