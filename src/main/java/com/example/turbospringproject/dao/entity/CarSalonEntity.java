@@ -1,5 +1,6 @@
 package com.example.turbospringproject.dao.entity;
 
+import com.example.turbospringproject.dao.entity.enums.ECarSalon;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +23,9 @@ public class CarSalonEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String tittle;
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private ECarSalon eCarSalon=ECarSalon.SIMPLE;
     private String email;
     private String password;
     private String description;

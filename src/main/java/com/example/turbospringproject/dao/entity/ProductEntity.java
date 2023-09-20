@@ -1,5 +1,7 @@
 package com.example.turbospringproject.dao.entity;
 
+import com.example.turbospringproject.dao.entity.enums.EProduct;
+import com.example.turbospringproject.dao.entity.enums.ProductActiveStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +25,9 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private EProduct eProduct=EProduct.SIMPLE;
     private String banType;
     private Double march;
     private String marchType;
@@ -42,7 +46,9 @@ public class ProductEntity {
     private String vinCode;
     private String description;
     private Integer viewCount;
-    private String activeStatus;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private ProductActiveStatus productActiveStatus=ProductActiveStatus.PENDING;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
