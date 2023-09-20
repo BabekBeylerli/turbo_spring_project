@@ -1,15 +1,10 @@
 package com.example.turbospringproject.model;
 
 import com.example.turbospringproject.dao.entity.*;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
