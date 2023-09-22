@@ -1,7 +1,7 @@
 package com.example.turbospringproject.service;
 
 import com.example.turbospringproject.dao.entity.PictureEntity;
-import com.example.turbospringproject.dao.repository.PicturesRepository;
+import com.example.turbospringproject.dao.repository.PictureRepository;
 import com.example.turbospringproject.mapper.PictureMapper;
 import com.example.turbospringproject.model.PictureDto;
 import lombok.extern.slf4j.Slf4j;
@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 @Slf4j
 public class PictureService {
-    private final PicturesRepository picturesRepository;
+    private final PictureRepository picturesRepository;
 
-    public PictureService(PicturesRepository picturesRepository) {
+    public PictureService(PictureRepository picturesRepository) {
         this.picturesRepository = picturesRepository;
     }
 

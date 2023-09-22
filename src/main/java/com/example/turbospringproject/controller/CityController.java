@@ -1,7 +1,7 @@
 package com.example.turbospringproject.controller;
 
-import com.example.turbospringproject.model.CarSalonPhoneDto;
 import com.example.turbospringproject.model.CityDto;
+import com.example.turbospringproject.model.CityFilterDto;
 import com.example.turbospringproject.service.CityService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ public class CityController {
         this.cityService = cityService;
     }
 
-    @GetMapping
+    @GetMapping("all")
     public List<CityDto> getAllCity() {
         return cityService.getAllCity();
     }
@@ -39,5 +39,10 @@ public class CityController {
     @DeleteMapping
     public void deleteCity(@PathVariable Integer cityId) {
         cityService.deleteCity(cityId);
+    }
+
+    @GetMapping("filter")
+    public List<CityDto> getCities(CityFilterDto cityFilterDto) {
+        return cityService.getCities(cityFilterDto);
     }
 }

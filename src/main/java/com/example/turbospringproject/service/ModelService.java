@@ -2,15 +2,16 @@ package com.example.turbospringproject.service;
 
 import com.example.turbospringproject.dao.entity.ModelEntity;
 import com.example.turbospringproject.dao.repository.ModelRepository;
-import com.example.turbospringproject.mapper.CityMapper;
 import com.example.turbospringproject.mapper.ModelMapper;
-import com.example.turbospringproject.model.CityDto;
 import com.example.turbospringproject.model.ModelDto;
+import com.example.turbospringproject.model.ModelFilterDto;
+import com.example.turbospringproject.service.specification.ModelSpecification;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -56,5 +57,13 @@ public class ModelService {
         log.info("ActionLog.deleteModel.start");
         modelRepository.deleteById(modelId);
         log.info("ActionLog.deleteModel.end");
+    }
+
+    public List<ModelDto> getModels(ModelFilterDto modelFilterDto) {
+        log.info("ActionLog.getModels.start");
+        var specification = Specification.where(new ModelSpecification(modelFilterDto.getName()));
+        var models = modelRepository.findAll(specification).stream().map(ModelMapper.mapper::mapEntityToDto).collect(Collectors.toList());
+        log.info("ActionLog.getModels.end");
+        return models;
     }
 }

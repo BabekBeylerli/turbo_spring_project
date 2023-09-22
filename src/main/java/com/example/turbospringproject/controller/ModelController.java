@@ -1,8 +1,6 @@
 package com.example.turbospringproject.controller;
 
-import com.example.turbospringproject.model.CarSalonPhoneDto;
-import com.example.turbospringproject.model.CarSituationDto;
-import com.example.turbospringproject.model.ModelDto;
+import com.example.turbospringproject.model.*;
 import com.example.turbospringproject.service.ModelService;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,4 +40,8 @@ public class ModelController {
         modelService.deleteModel(modelId);
     }
 
+    @GetMapping("filter")
+    public List<ModelDto> getModels(ModelFilterDto modelFilterDto) {
+        return modelService.getModels(modelFilterDto);
+    }
 }

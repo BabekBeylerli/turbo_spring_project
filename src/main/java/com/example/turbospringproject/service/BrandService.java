@@ -4,12 +4,14 @@ import com.example.turbospringproject.dao.entity.BrandEntity;
 import com.example.turbospringproject.dao.repository.BrandRepository;
 import com.example.turbospringproject.mapper.BrandMapper;
 import com.example.turbospringproject.model.BrandDto;
+import com.example.turbospringproject.model.BrandFilterDto;
+import com.example.turbospringproject.service.specification.BrandSpecification;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -54,5 +56,13 @@ public class BrandService {
         log.info("ActionLog.deleteBrand.start");
         brandRepository.deleteById(brandId);
         log.info("ActionLog.deleteBrand.end");
+    }
+
+    public List<BrandDto> getBrands(BrandFilterDto brandFilterDto) {
+        log.info("ActionLog.getBrands.start");
+        var specification = Specification.where(new BrandSpecification(brandFilterDto.getName()));
+        var brands = brandRepository.findAll(specification).stream().map(BrandMapper.mapper::mapEntityToDto).collect(Collectors.toList());
+        log.info("ActionLog.getBrands.end");
+        return brands;
     }
 }
