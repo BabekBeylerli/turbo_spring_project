@@ -53,6 +53,36 @@ public class SupplySpecification {
                         criteriaBuilder.isTrue(criteriaBuilder.literal(true)));
     }
 
+    public static Specification<SupplyFilterDto> filterByLeatherSalon(boolean leatherSalon) {
+        return ((root, query, criteriaBuilder) ->
+                leatherSalon ? criteriaBuilder.isTrue(root.get("leatherSalon")) :
+                        criteriaBuilder.isTrue(criteriaBuilder.literal(true)));
+    }
+
+    public static Specification<SupplyFilterDto> filterByXenonLamps(boolean xenonLamps) {
+        return ((root, query, criteriaBuilder) ->
+                xenonLamps ? criteriaBuilder.isTrue(root.get("xenonLamps")) :
+                        criteriaBuilder.isTrue(criteriaBuilder.literal(true)));
+    }
+
+    public static Specification<SupplyFilterDto> filterByRearViewCamera(boolean rearViewCamera) {
+        return ((root, query, criteriaBuilder) ->
+                rearViewCamera ? criteriaBuilder.isTrue(root.get("rearViewCamera")) :
+                        criteriaBuilder.isTrue(criteriaBuilder.literal(true)));
+    }
+
+    public static Specification<SupplyFilterDto> filterBySideCurtains(boolean sideCurtains) {
+        return ((root, query, criteriaBuilder) ->
+                sideCurtains ? criteriaBuilder.isTrue(root.get("sideCurtains")) :
+                        criteriaBuilder.isTrue(criteriaBuilder.literal(true)));
+    }
+
+
+    public static Specification<SupplyFilterDto> filterBySeatVentilation(boolean seatVentilation) {
+        return ((root, query, criteriaBuilder) ->
+                seatVentilation ? criteriaBuilder.isTrue(root.get("seatVentilation")) :
+                        criteriaBuilder.isTrue(criteriaBuilder.literal(true)));
+    }
 
 }
 
