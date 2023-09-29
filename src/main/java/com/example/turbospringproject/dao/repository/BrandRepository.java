@@ -10,4 +10,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.Optional;
 
 public interface BrandRepository extends JpaRepository<BrandEntity, Integer>, JpaSpecificationExecutor<BrandEntity> {
-    BrandEntity findByName(Specification<?> specification, String name);}
+    BrandEntity findByName(Specification<?> specification, String name);
+}
