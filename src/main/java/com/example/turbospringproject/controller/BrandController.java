@@ -42,7 +42,7 @@ public class BrandController {
     }
 
     @GetMapping("/filter")
-    public BrandDto getBrands(BrandFilterDto brandFilterDto) {
+    public BrandDto getBrand(BrandFilterDto brandFilterDto) {
         return brandsService.getBrand(brandFilterDto);
     }
 }
