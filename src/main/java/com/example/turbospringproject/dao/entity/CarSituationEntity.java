@@ -29,7 +29,7 @@ public class CarSituationEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(referencedColumnName = "id")
     private ProductEntity product;
 

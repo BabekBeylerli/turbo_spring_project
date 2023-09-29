@@ -68,8 +68,8 @@ public class ProductEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
     private SubModelEntity model;
-    @OneToMany(mappedBy = "product")
-    private List<CarSituationEntity> carSituations;
+    @OneToOne(mappedBy = "product")
+    private CarSituationEntity carSituations;
     @OneToOne(mappedBy = "product")
     private SupplyEntity supply;
     @OneToMany(mappedBy = "product")
