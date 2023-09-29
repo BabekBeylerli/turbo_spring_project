@@ -1,48 +1,44 @@
 package com.example.turbospringproject.service.specification;
 
-import com.example.turbospringproject.dao.entity.CarSalonEntity;
-import com.example.turbospringproject.dao.entity.CityEntity;
 import com.example.turbospringproject.dao.entity.ProductEntity;
-import com.example.turbospringproject.dao.entity.SubModelEntity;
-import com.example.turbospringproject.dao.entity.enums.ProductActiveStatus;
-import com.example.turbospringproject.dao.entity.enums.SearchOperation;
 import com.example.turbospringproject.model.ProductFilterDto;
 import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductSpecification implements Specification<ProductEntity> {
     private final ProductFilterDto productFilterDto;
 
     public ProductSpecification(final ProductFilterDto productFilterDto) {
-        super();
         this.productFilterDto = productFilterDto;
     }
 
     @Override
     public Predicate toPredicate(Root<ProductEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-        String strSearch =
-                productFilterDto.getValue()
-                        .toString()
-                        .toLowerCase();
-        switch (Objects.requireNonNull(
-                SearchOperation.getSimpleOperation(
-                        productFilterDto.getOperation()))) {
-            case CONTAINS:
-                return criteriaBuilder.like(criteriaBuilder.lower(root.get(productFilterDto.getFilterKey())), "%" + strSearch + "%");
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (productFilterDto.getColor() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("color"), productFilterDto.getColor()));
         }
+
+        if (productFilterDto.getUpPrice() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("upPrice"), productFilterDto.getUpPrice()));
+        }
+        if (productFilterDto.getDownPrice() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("downPrice"), productFilterDto.getDownPrice()));
+        }
+        if (productFilterDto.getPriceType() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("priceType"), productFilterDto.getPriceType()));
+        }
+
+        // Combine predicates with AND
+        if (!predicates.isEmpty()) {
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        }
+
         return null;
     }
-
-//    private Join<ProductEntity, CityEntity> cityJoin(Root<ProductEntity> root) {
-//        return root.join("city");
-//    }
-//
-//    private Join<ProductEntity, CarSalonEntity> carSalonJoin(Root<ProductEntity> root) {
-//        return root.join("car");
-//    }
-//    private Join<ProductEntity, SubModelEntity> subModelJoin(Root<ProductEntity> root){
-//        return root.join("model");
-//    }
 }
+
