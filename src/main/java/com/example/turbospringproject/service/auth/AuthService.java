@@ -5,6 +5,7 @@ import com.example.turbospringproject.model.auth.AuthRequestDto;
 import com.example.turbospringproject.model.auth.AuthenticationDto;
 import com.example.turbospringproject.model.auth.UserRegisterRequestDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -39,7 +41,7 @@ public class AuthService {
                         authRequestDto.getPassword()
                 )
         );
-
+        log.info("gelib bura");
         UserEntity user = userRepository.findUserByPhoneNumber(authRequestDto.getPhoneNumber()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationDto.builder()
