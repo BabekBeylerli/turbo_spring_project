@@ -1,19 +1,13 @@
 package com.example.turbospringproject.model;
 
-import com.example.turbospringproject.dao.entity.ProductEntity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
-public class SupplyDto {
+public class SupplyFilterDto {
     private boolean alloyWheels;
     private boolean abs;
     private boolean hatch;
@@ -27,6 +21,4 @@ public class SupplyDto {
     private boolean rearViewCamera;
     private boolean sideCurtains;
     private boolean seatVentilation;
-
-    private ProductEntity product;
 }
