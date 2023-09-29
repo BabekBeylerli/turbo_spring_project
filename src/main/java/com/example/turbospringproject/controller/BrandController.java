@@ -43,6 +43,6 @@ public class BrandController {
 
     @GetMapping("filter")
     public List<BrandDto> getBrands(BrandFilterDto brandFilterDto) {
-        return brandsService.getBrands(brandFilterDto);
+        return brandsService.getBrand(brandFilterDto);
     }
 }

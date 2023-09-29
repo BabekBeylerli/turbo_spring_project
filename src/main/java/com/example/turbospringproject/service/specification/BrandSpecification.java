@@ -8,6 +8,7 @@ import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
 public class BrandSpecification implements Specification<BrandEntity> {
+
     private final String name;
 
     public BrandSpecification(String name) {
@@ -16,9 +17,10 @@ public class BrandSpecification implements Specification<BrandEntity> {
 
     @Override
     public Predicate toPredicate(Root<BrandEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-        if (name == null) {
-            return null;
+        if (name == null || name.isEmpty()) {
+            return null; // Filtre boşsa hiçbir şey yapma
         }
-        return criteriaBuilder.equal(root.<String>get("name"),name);
+        return criteriaBuilder.equal(root.get("name"), name);
     }
+
 }

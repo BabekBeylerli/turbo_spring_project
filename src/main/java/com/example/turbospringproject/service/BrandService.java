@@ -58,10 +58,15 @@ public class BrandService {
         log.info("ActionLog.deleteBrand.end");
     }
 
-    public List<BrandDto> getBrands(BrandFilterDto brandFilterDto) {
+    public List<BrandDto> getBrand(BrandFilterDto brandFilterDto) {
         log.info("ActionLog.getBrands.start");
-        var specification = Specification.where(new BrandSpecification(brandFilterDto.getName()));
-        var brands = brandRepository.findAll(specification).stream().map(BrandMapper.mapper::mapEntityToDto).collect(Collectors.toList());
+        var specification = new BrandSpecification(brandFilterDto.getName());
+
+        var brands = brandRepository.findByName(specification, brandFilterDto.getName())
+                .stream()
+                .map(BrandMapper.mapper::mapEntityToDto)
+                .collect(Collectors.toList());
+
         log.info("ActionLog.getBrands.end");
         return brands;
     }
