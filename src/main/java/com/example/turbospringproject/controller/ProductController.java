@@ -1,7 +1,11 @@
 package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.ProductDto;
+import com.example.turbospringproject.model.ProductFilterDto;
+import com.example.turbospringproject.model.ProductLiteDto;
 import com.example.turbospringproject.service.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +20,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductDto> getAllProduct() {
-        return productService.getAllProduct();
+    public Page<ProductLiteDto> getAllProduct(Pageable pageable, ProductFilterDto productFilterDto) {
+        return productService.getAllProduct(pageable, productFilterDto);
     }
 
     @GetMapping("{productId}")

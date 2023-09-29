@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductSpecification implements Specification<ProductEntity> {
-    private final ProductFiltedrDto productFilterDto;
+    private final ProductFilterDto productFilterDto;
 
     public ProductSpecification(final ProductFilterDto productFilterDto) {
         this.productFilterDto = productFilterDto;
