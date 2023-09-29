@@ -41,8 +41,8 @@ public class BrandController {
         brandsService.deleteBrand(brandId);
     }
 
-    @GetMapping("filter")
-    public List<BrandDto> getBrands(BrandFilterDto brandFilterDto) {
+    @GetMapping("/filter")
+    public BrandDto getBrands(BrandFilterDto brandFilterDto) {
         return brandsService.getBrand(brandFilterDto);
     }
 }
