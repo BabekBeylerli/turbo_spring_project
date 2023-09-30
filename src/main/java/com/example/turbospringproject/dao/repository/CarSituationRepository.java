@@ -10,6 +10,6 @@ import java.util.List;
 
 
 public interface CarSituationRepository extends JpaRepository<CarSituationEntity, Integer>, JpaSpecificationExecutor<CarSituationEntity> {
-    List<CarSituationDto> findByStrokeAndColoredAndAccidentAndCreditAndBarter(boolean isStroke, boolean isColored, boolean isAccident, boolean isCredit, boolean isBarter);
+   // List<CarSituationDto> findByStrokeAndColoredAndAccidentAndCreditAndBarter(boolean isStroke, boolean isColored, boolean isAccident, boolean isCredit, boolean isBarter);
 }
 
