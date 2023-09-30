@@ -38,10 +38,7 @@ public class UserEntity implements UserDetails {
         return null;
     }
 
-    @Override
-    public String getPassword() {
-        return null;
-    }
+
 
     @Override
     public String getUsername() {
