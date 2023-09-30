@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface SubModelRepository extends JpaRepository<SubModelEntity, Integer>, JpaSpecificationExecutor<SubModelEntity> {
-    SubModelEntity findByName(Specification<?> specification, String name);
+
 }

@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,8 +62,8 @@ public class BrandService {
     public BrandDto getBrandByFilter(BrandFilterDto brandFilterDto) {
         log.info("ActionLog.getBrand.start");
         var specification = new BrandSpecification(brandFilterDto.getName());
-        BrandEntity brand = brandRepository.findByName(specification, brandFilterDto.getName());
-        BrandDto brandDto = BrandMapper.mapper.mapEntityToDto(brand);
+        Optional<BrandEntity> brand = brandRepository.findOne(specification);
+        BrandDto brandDto = BrandMapper.mapper.mapEntityToDto(brand.orElse(null));
         log.info("ActionLog.getBrand.end");
         return brandDto;
     }

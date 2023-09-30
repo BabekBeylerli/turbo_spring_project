@@ -2,6 +2,7 @@ package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.CarSalonPhoneDto;
 import com.example.turbospringproject.model.CarSituationDto;
+import com.example.turbospringproject.model.CarSituationFilterDto;
 import com.example.turbospringproject.service.CarSituationService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,8 @@ public class CarSituationController {
         this.carSituationService = carSituationService;
     }
     @GetMapping
-    public List<CarSituationDto> getAllCarSituation(){
-        return carSituationService.getAllCarSituation();
+    public List<CarSituationDto> getAllCarSituation(CarSituationFilterDto carSituationFilterDto){
+        return carSituationService.getFilteredCarSituations(carSituationFilterDto);
     }
     @GetMapping("{carSituationId}")
     public CarSituationDto getCarSituation(@PathVariable Integer carSituationId){

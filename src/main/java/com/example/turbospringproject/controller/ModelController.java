@@ -40,8 +40,8 @@ public class ModelController {
         modelService.deleteModel(modelId);
     }
 
-    @GetMapping("filter")
-    public ModelDto getModels(ModelFilterDto modelFilterDto) {
-        return modelService.getModels(modelFilterDto);
-    }
+//    @GetMapping("filter")
+//    public ModelDto getModels(ModelFilterDto modelFilterDto) {
+//        return modelService.getModels(modelFilterDto);
+//    }
 }

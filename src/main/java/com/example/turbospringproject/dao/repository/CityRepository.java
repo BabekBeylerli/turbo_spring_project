@@ -7,5 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface CityRepository extends JpaRepository<CityEntity, Integer>, JpaSpecificationExecutor<CityEntity> {
-    CityEntity findByName(Specification<?> specification, String name);
 }

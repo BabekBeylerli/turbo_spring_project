@@ -60,12 +60,12 @@ public class ModelService {
         log.info("ActionLog.deleteModel.end");
     }
 
-    public ModelDto getModels(ModelFilterDto modelFilterDto) {
-        log.info("ActionLog.getModels.start");
-        var specification = Specification.where(new ModelSpecification(modelFilterDto.getName()));
-        ModelEntity model = modelRepository.findByName(specification, modelFilterDto.getName());
-        ModelDto modelDto = ModelMapper.mapper.mapEntityToDto(model);
-        log.info("ActionLog.getModels.end");
-        return modelDto;
-    }
+//    public ModelDto getModels(ModelFilterDto modelFilterDto) {
+//        log.info("ActionLog.getModels.start");
+//        var specification = Specification.where(new ModelSpecification(modelFilterDto.getName()));
+//        ModelEntity model = modelRepository.findByName(specification, modelFilterDto.getName());
+//        ModelDto modelDto = ModelMapper.mapper.mapEntityToDto(model);
+//        log.info("ActionLog.getModels.end");
+//        return modelDto;
+//    }
 }

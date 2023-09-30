@@ -61,13 +61,13 @@ public class SubModelService {
         subModelRepository.deleteById(subModelId);
         log.info("ActionLog.deleteSubModel.end");
     }
-    public SubModelDto getSubModels(SubModelFilterDto subModelFilterDto) {
-        log.info("ActionLog.getSubModels.start");
-        var specification = Specification.where(new CitySpecification(subModelFilterDto.getName()));
-        SubModelEntity subModelEntity = subModelRepository.findByName(specification, subModelFilterDto.getName());
-        SubModelDto subModelDto= SubModelMapper.mapper.mapEntityToDto(subModelEntity);
-        log.info("ActionLog.getSubModels.end");
-        return subModelDto;
-    }
+//    public SubModelDto getSubModels(SubModelFilterDto subModelFilterDto) {
+//        log.info("ActionLog.getSubModels.start");
+//        var specification = Specification.where(new CitySpecification(subModelFilterDto.getName()));
+//        SubModelEntity subModelEntity = subModelRepository.findByName(specification, subModelFilterDto.getName());
+//        SubModelDto subModelDto= SubModelMapper.mapper.mapEntityToDto(subModelEntity);
+//        log.info("ActionLog.getSubModels.end");
+//        return subModelDto;
+//    }
 
 }
