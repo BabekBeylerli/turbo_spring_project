@@ -41,7 +41,7 @@ public class ModelController {
     }
 
     @GetMapping("filter")
-    public List<ModelDto> getModels(ModelFilterDto modelFilterDto) {
+    public ModelDto getModels(ModelFilterDto modelFilterDto) {
         return modelService.getModels(modelFilterDto);
     }
 }

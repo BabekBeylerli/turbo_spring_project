@@ -1,5 +1,6 @@
 package com.example.turbospringproject.service;
 
+import com.example.turbospringproject.dao.entity.CityEntity;
 import com.example.turbospringproject.dao.entity.ModelEntity;
 import com.example.turbospringproject.dao.repository.ModelRepository;
 import com.example.turbospringproject.mapper.ModelMapper;
@@ -59,11 +60,12 @@ public class ModelService {
         log.info("ActionLog.deleteModel.end");
     }
 
-    public List<ModelDto> getModels(ModelFilterDto modelFilterDto) {
+    public ModelDto getModels(ModelFilterDto modelFilterDto) {
         log.info("ActionLog.getModels.start");
         var specification = Specification.where(new ModelSpecification(modelFilterDto.getName()));
-        var models = modelRepository.findAll(specification).stream().map(ModelMapper.mapper::mapEntityToDto).collect(Collectors.toList());
+        ModelEntity model = modelRepository.findByName(specification, modelFilterDto.getName());
+        ModelDto modelDto = ModelMapper.mapper.mapEntityToDto(model);
         log.info("ActionLog.getModels.end");
-        return models;
+        return modelDto;
     }
 }

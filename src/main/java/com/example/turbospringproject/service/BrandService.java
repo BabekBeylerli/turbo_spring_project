@@ -58,7 +58,7 @@ public class BrandService {
         log.info("ActionLog.deleteBrand.end");
     }
 
-    public BrandDto getBrand(BrandFilterDto brandFilterDto) {
+    public BrandDto getBrandByFilter(BrandFilterDto brandFilterDto) {
         log.info("ActionLog.getBrand.start");
         var specification = new BrandSpecification(brandFilterDto.getName());
         BrandEntity brand = brandRepository.findByName(specification, brandFilterDto.getName());

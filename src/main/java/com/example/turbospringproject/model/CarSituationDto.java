@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,7 +22,7 @@ public class CarSituationDto {
     private boolean credit;
     private boolean barter;
 
-    private ProductEntity product;
+    private List<ProductEntity> product;
 
 
 }

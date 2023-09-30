@@ -44,7 +44,7 @@ public class ProductDto {
     private UserEntity user;
 
     private SubModelEntity model;
-    private List<CarSituationEntity> carSituations;
+    private CarSituationEntity carSituations;
     private SupplyEntity supply;
     private List<PictureEntity> pictures;
 

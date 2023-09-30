@@ -1,5 +1,6 @@
 package com.example.turbospringproject.mapper;
 
+import com.example.turbospringproject.dao.entity.CarSituationEntity;
 import com.example.turbospringproject.dao.entity.PictureEntity;
 import com.example.turbospringproject.dao.entity.ProductEntity;
 import com.example.turbospringproject.model.PictureDto;

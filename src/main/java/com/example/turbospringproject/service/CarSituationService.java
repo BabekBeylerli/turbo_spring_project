@@ -6,7 +6,10 @@ import com.example.turbospringproject.mapper.CarSalonMapper;
 import com.example.turbospringproject.mapper.CarSituationMapper;
 import com.example.turbospringproject.model.CarSalonDto;
 import com.example.turbospringproject.model.CarSituationDto;
+import com.example.turbospringproject.model.CarSituationFilterDto;
+import com.example.turbospringproject.service.specification.CarSituationSpecification;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,9 +31,10 @@ public class CarSituationService {
         log.info("ActionLog.getAllCarSituation.end");
         return carSituationDtos;
     }
+
     public CarSituationDto getCarSituation(Integer carSituationId) {
-     log.info("ActionLog.getCarSituation.start");
-        CarSituationEntity carSituationEntity=
+        log.info("ActionLog.getCarSituation.start");
+        CarSituationEntity carSituationEntity =
                 carSituationRepository.findById(carSituationId).orElseThrow(() ->
                         new RuntimeException("Not Found")
                 );
@@ -56,4 +60,16 @@ public class CarSituationService {
         log.info("ActionLog.deleteCarSituation.end");
 
     }
+
+    public List<CarSituationDto> getFilteredCarSituations(CarSituationFilterDto filterDto) {
+        List<CarSituationDto> carSituations = carSituationRepository.findByStrokeAndColoredAndAccidentAndCreditAndBarter
+                (filterDto.isStroke(), filterDto.isColored(), filterDto.isAccident(),
+                        filterDto.isCredit(), filterDto.isBarter()
+        );
+
+
+        return carSituations;
+    }
+
+
 }

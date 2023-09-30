@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,11 +60,12 @@ public class CityService {
         log.info("ActionLog.deleteCity.end");
     }
 
-    public List<CityDto> getCities(CityFilterDto cityFilterDto) {
+    public CityDto getCities(CityFilterDto cityFilterDto) {
         log.info("ActionLog.getCities.start");
         var specification = Specification.where(new CitySpecification(cityFilterDto.getName()));
-        var cities = cityRepository.findAll(specification).stream().map(CityMapper.mapper::mapEntityToDto).collect(Collectors.toList());
-        log.info("ActionLog.getAllCity.end");
-        return cities;
+        CityEntity city = cityRepository.findByName(specification, cityFilterDto.getName());
+        CityDto cityDto=CityMapper.mapper.mapEntityToDto(city);
+        log.info("ActionLog.getCities.end");
+        return cityDto;
     }
 }

@@ -1,10 +1,17 @@
 package com.example.turbospringproject.service;
 
+import com.example.turbospringproject.dao.entity.CityEntity;
 import com.example.turbospringproject.dao.entity.SubModelEntity;
 import com.example.turbospringproject.dao.repository.SubModelRepository;
+import com.example.turbospringproject.mapper.CityMapper;
 import com.example.turbospringproject.mapper.SubModelMapper;
+import com.example.turbospringproject.model.CityDto;
+import com.example.turbospringproject.model.CityFilterDto;
 import com.example.turbospringproject.model.SubModelDto;
+import com.example.turbospringproject.model.SubModelFilterDto;
+import com.example.turbospringproject.service.specification.CitySpecification;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,6 +60,14 @@ public class SubModelService {
         log.info("ActionLog.deleteSubModel.start");
         subModelRepository.deleteById(subModelId);
         log.info("ActionLog.deleteSubModel.end");
+    }
+    public SubModelDto getSubModels(SubModelFilterDto subModelFilterDto) {
+        log.info("ActionLog.getSubModels.start");
+        var specification = Specification.where(new CitySpecification(subModelFilterDto.getName()));
+        SubModelEntity subModelEntity = subModelRepository.findByName(specification, subModelFilterDto.getName());
+        SubModelDto subModelDto= SubModelMapper.mapper.mapEntityToDto(subModelEntity);
+        log.info("ActionLog.getSubModels.end");
+        return subModelDto;
     }
 
 }

@@ -42,7 +42,7 @@ public class CityController {
     }
 
     @GetMapping("filter")
-    public List<CityDto> getCities(CityFilterDto cityFilterDto) {
+    public CityDto getCities(CityFilterDto cityFilterDto) {
         return cityService.getCities(cityFilterDto);
     }
 }
