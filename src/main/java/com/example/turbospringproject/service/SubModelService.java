@@ -28,11 +28,19 @@ public class SubModelService {
         this.subModelRepository = subModelRepository;
     }
 
-    public List<SubModelDto> getAllSubModel(SubModelFilterDto subModelFilterDto) {
+    public List<SubModelDto> getAllSubModel() {
         log.info("ActionLog.getAllSubModel.start");
+        List<SubModelDto> subModelDtos =
+                SubModelMapper.mapper.mapEntityToDtos(subModelRepository.findAll());
+        log.info("ActionLog.getAllSubModel.end");
+        return subModelDtos;
+    }
+
+    public List<SubModelDto> getAllFilterSubModel(SubModelFilterDto subModelFilterDto) {
+        log.info("ActionLog.getAllFilterSubModel.start");
         var specification = Specification.where(new SubModelSpecification(subModelFilterDto.getName()));
         List<SubModelDto> subModelDtos = SubModelMapper.mapper.mapEntityToDtos(subModelRepository.findAll(specification));
-        log.info("ActionLog.getAllSubModel.end");
+        log.info("ActionLog.getAllFilterSubModel.end");
         return subModelDtos;
     }
 
@@ -63,13 +71,5 @@ public class SubModelService {
         subModelRepository.deleteById(subModelId);
         log.info("ActionLog.deleteSubModel.end");
     }
-//    public SubModelDto getFilterSubModel(SubModelFilterDto subModelFilterDto) {
-//        log.info("ActionLog.getSubModels.start");
-//        var specification = Specification.where(new CitySpecification(subModelFilterDto.getName()));
-//        SubModelEntity subModelEntity = subModelRepository.findByName(specification, subModelFilterDto.getName());
-//        SubModelDto subModelDto= SubModelMapper.mapper.mapEntityToDto(subModelEntity);
-//        log.info("ActionLog.getSubModels.end");
-//        return subModelDto;
-//    }
 
 }

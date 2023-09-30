@@ -2,6 +2,7 @@ package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.*;
 import com.example.turbospringproject.service.ModelService;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,13 @@ public class ModelController {
     }
 
     @GetMapping
-    public List<ModelDto> getAllModel(ModelFilterDto modelFilterDto) {
-        return modelService.getAllModel(modelFilterDto);
+    public List<ModelDto> getAllModel() {
+        return modelService.getAllModel();
+    }
+
+    @GetMapping("/filter")
+    public List<ModelDto> getAllFilterModel(ModelFilterDto modelFilterDto) {
+        return modelService.getAllFilterModel(modelFilterDto);
     }
 
     @GetMapping("{modelId}")

@@ -16,24 +16,35 @@ public class CarSituationController {
     public CarSituationController(CarSituationService carSituationService) {
         this.carSituationService = carSituationService;
     }
+
     @GetMapping
-    public List<CarSituationDto> getAllCarSituation(CarSituationFilterDto carSituationFilterDto){
+    public List<CarSituationDto> getAllCarSituation() {
+        return carSituationService.getAllCarSituation();
+
+    }
+
+    @GetMapping("filter")
+    public List<CarSituationDto> getFilteredCarSituations(CarSituationFilterDto carSituationFilterDto) {
         return carSituationService.getFilteredCarSituations(carSituationFilterDto);
     }
+
     @GetMapping("{carSituationId}")
-    public CarSituationDto getCarSituation(@PathVariable Integer carSituationId){
+    public CarSituationDto getCarSituation(@PathVariable Integer carSituationId) {
         return carSituationService.getCarSituation(carSituationId);
     }
+
     @PostMapping
-    public void saveCarSituation(@RequestBody CarSituationDto carSituationDto){
+    public void saveCarSituation(@RequestBody CarSituationDto carSituationDto) {
         carSituationService.saveCarSituation(carSituationDto);
     }
+
     @PutMapping
-    public void updateCarSituation(@RequestBody CarSituationDto carSituationDto,@PathVariable Integer carSituationId){
-        carSituationService.editCarSituation(carSituationDto,carSituationId);
+    public void updateCarSituation(@RequestBody CarSituationDto carSituationDto, @PathVariable Integer carSituationId) {
+        carSituationService.editCarSituation(carSituationDto, carSituationId);
     }
+
     @DeleteMapping
-    public void deleteCarSituation(@PathVariable Integer carSituationId){
+    public void deleteCarSituation(@PathVariable Integer carSituationId) {
         carSituationService.deleteCarSituation(carSituationId);
     }
 }

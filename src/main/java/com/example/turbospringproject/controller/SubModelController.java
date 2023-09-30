@@ -17,14 +17,19 @@ public class SubModelController {
         this.subModelService = subModelService;
     }
 
+    @GetMapping
+    public List<SubModelDto> getAllSubModel() {
+        return subModelService.getAllSubModel();
+    }
+
     @GetMapping("{subModelId}")
     public SubModelDto getSubModel(@PathVariable Integer subModelId) {
         return subModelService.getSubModel(subModelId);
     }
 
-    @GetMapping
-    public List<SubModelDto> getAllSubModel(SubModelFilterDto subModelFilterDto) {
-        return subModelService.getAllSubModel(subModelFilterDto);
+    @GetMapping("/filter")
+    public List<SubModelDto> getAllFilterSubModel(SubModelFilterDto subModelFilterDto) {
+        return subModelService.getAllFilterSubModel(subModelFilterDto);
     }
 
     @PostMapping

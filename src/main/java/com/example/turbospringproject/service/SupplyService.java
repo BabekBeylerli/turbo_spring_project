@@ -25,12 +25,20 @@ public class SupplyService {
         this.supplyRepository = supplyRepository;
     }
 
-    public List<SupplyDto> getAllSupply(SupplyFilterDto supplyFilterDto) {
+    public List<SupplyDto> getAllSupply() {
         log.info("ActionLog.getAllSupply.start");
-        Specification<SupplyEntity> specification = new SupplySpecification(supplyFilterDto);
-        List<SupplyEntity> supplyEntities=supplyRepository.findAll(specification);
-        List<SupplyDto> supplyDtos = SupplyMapper.mapper.mapEntityToDtos(supplyEntities);
+        List<SupplyDto> supplyDtos =
+                SupplyMapper.mapper.mapEntityToDtos(supplyRepository.findAll());
         log.info("ActionLog.getAllSupply.end");
+        return supplyDtos;
+    }
+
+    public List<SupplyDto> getAllFilterSupply(SupplyFilterDto supplyFilterDto) {
+        log.info("ActionLog.getAllFilterSupply.start");
+        Specification<SupplyEntity> specification = new SupplySpecification(supplyFilterDto);
+        List<SupplyEntity> supplyEntities = supplyRepository.findAll(specification);
+        List<SupplyDto> supplyDtos = SupplyMapper.mapper.mapEntityToDtos(supplyEntities);
+        log.info("ActionLog.getAllFilterSupply.end");
         return supplyDtos;
     }
 

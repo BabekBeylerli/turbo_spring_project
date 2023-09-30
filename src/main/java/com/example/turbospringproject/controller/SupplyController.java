@@ -16,10 +16,14 @@ public class SupplyController {
         this.supplyService = supplyService;
     }
 
-
     @GetMapping
-    public List<SupplyDto> getAllSupply( SupplyFilterDto supplyFilterDto) {
-        return supplyService.getAllSupply(supplyFilterDto);
+    public List<SupplyDto> getAllSupply() {
+        return supplyService.getAllSupply();
+    }
+
+    @GetMapping("/filter")
+    public List<SupplyDto> getAllFilterSupply(SupplyFilterDto supplyFilterDto) {
+        return supplyService.getAllFilterSupply(supplyFilterDto);
     }
 
     @GetMapping("{supplyId}")

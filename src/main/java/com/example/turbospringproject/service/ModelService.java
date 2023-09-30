@@ -23,13 +23,22 @@ public class ModelService {
         this.modelRepository = modelRepository;
     }
 
-    public List<ModelDto> getAllModel(ModelFilterDto modelFilterDto) {
+    public List<ModelDto> getAllModel() {
         log.info("ActionLog.getAllModel.start");
-        var specification=Specification.where(new ModelSpecification(modelFilterDto.getName()));
-        List<ModelDto> modelDtos = ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll(specification));
+        List<ModelDto> modelDtos =
+                ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll());
         log.info("ActionLog.getAllModel.end");
         return modelDtos;
     }
+
+    public List<ModelDto> getAllFilterModel(ModelFilterDto modelFilterDto) {
+        log.info("ActionLog.getAllFilterModel.start");
+        var specification = Specification.where(new ModelSpecification(modelFilterDto.getName()));
+        List<ModelDto> modelDtos = ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll(specification));
+        log.info("ActionLog.getAllFilterModel.end");
+        return modelDtos;
+    }
+
 
     public ModelDto getModel(Integer modelId) {
         log.info("ActionLog.getModel.start");
@@ -59,12 +68,4 @@ public class ModelService {
         log.info("ActionLog.deleteModel.end");
     }
 
-//    public ModelDto getModels(ModelFilterDto modelFilterDto) {
-//        log.info("ActionLog.getModels.start");
-//        var specification = Specification.where(new ModelSpecification(modelFilterDto.getName()));
-//        ModelEntity model = modelRepository.findByName(specification, modelFilterDto.getName());
-//        ModelDto modelDto = ModelMapper.mapper.mapEntityToDto(model);
-//        log.info("ActionLog.getModels.end");
-//        return modelDto;
-//    }
 }
