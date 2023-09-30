@@ -1,6 +1,7 @@
 package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.SubModelDto;
+import com.example.turbospringproject.model.SubModelFilterDto;
 import com.example.turbospringproject.service.SubModelService;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,8 @@ public class SubModelController {
     }
 
     @GetMapping
-    public List<SubModelDto> getAllSubModel() {
-        return subModelService.getAllSubModel();
+    public List<SubModelDto> getAllSubModel(SubModelFilterDto subModelFilterDto) {
+        return subModelService.getAllSubModel(subModelFilterDto);
     }
 
     @PostMapping
