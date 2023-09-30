@@ -1,6 +1,7 @@
 package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.SupplyDto;
+import com.example.turbospringproject.model.SupplyFilterDto;
 import com.example.turbospringproject.service.SupplyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,8 @@ public class SupplyController {
 
 
     @GetMapping
-    public List<SupplyDto> getAllSupply() {
-        return supplyService.getAllSupply();
+    public List<SupplyDto> getAllSupply( SupplyFilterDto supplyFilterDto) {
+        return supplyService.getAllSupply(supplyFilterDto);
     }
 
     @GetMapping("{supplyId}")

@@ -21,7 +21,7 @@ public class SupplyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private boolean alloyWheels;
-    private boolean usa;
+    private boolean abs;
     private boolean hatch;
     private boolean rainSensor;
     private boolean centralLocking;
