@@ -16,8 +16,8 @@ public class ModelController {
     }
 
     @GetMapping
-    public List<ModelDto> getAllModel() {
-        return modelService.getAllModel();
+    public List<ModelDto> getAllModel(ModelFilterDto modelFilterDto) {
+        return modelService.getAllModel(modelFilterDto);
     }
 
     @GetMapping("{modelId}")

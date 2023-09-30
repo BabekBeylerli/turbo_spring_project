@@ -24,10 +24,10 @@ public class ModelService {
         this.modelRepository = modelRepository;
     }
 
-    public List<ModelDto> getAllModel() {
+    public List<ModelDto> getAllModel(ModelFilterDto modelFilterDto) {
         log.info("ActionLog.getAllModel.start");
-        List<ModelDto> modelDtos =
-                ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll());
+        var specification=Specification.where(new ModelSpecification(modelFilterDto.getName()));
+        List<ModelDto> modelDtos = ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll(specification));
         log.info("ActionLog.getAllModel.end");
         return modelDtos;
     }
