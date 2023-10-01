@@ -5,8 +5,12 @@ import com.example.turbospringproject.dao.repository.PictureRepository;
 import com.example.turbospringproject.mapper.PictureMapper;
 import com.example.turbospringproject.model.PictureDto;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 @Service
@@ -51,6 +55,18 @@ public class PictureService {
         log.info("ActionLog.deletePicture.start");
         picturesRepository.deleteById(pictureId);
         log.info("ActionLog.deletePicture.end");
+    }
+
+
+    public String convertImageToBase64(String imagePath) throws IOException {
+        log.info("ActionLog.Base64.start");
+        // Görüntü dosyasını okuyoruz.
+        byte[] imageBytes = Files.readAllBytes(Path.of(imagePath));
+
+        // Görüntüyü Base64'e dönüştürüyoruz.
+        String base64Image = Base64.encodeBase64String(imageBytes);
+        log.info("ActionLog.Base64.end");
+        return base64Image;
     }
 
 }

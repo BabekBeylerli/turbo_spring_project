@@ -45,9 +45,4 @@ public class ModelController {
     public void deleteModel(@PathVariable Integer modelId) {
         modelService.deleteModel(modelId);
     }
-
-//    @GetMapping("filter")
-//    public ModelDto getModels(ModelFilterDto modelFilterDto) {
-//        return modelService.getModels(modelFilterDto);
-//    }
 }

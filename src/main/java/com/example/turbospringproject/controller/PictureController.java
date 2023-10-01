@@ -5,6 +5,7 @@ import com.example.turbospringproject.service.PictureService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -39,5 +40,10 @@ public class PictureController {
     @DeleteMapping
     public void deletePicture(@PathVariable Integer pictureId) {
         pictureService.deletePicture(pictureId);
+    }
+
+    @GetMapping("/image-to-base64/{imagePath}")
+    public String convertImageToBase64(@PathVariable  String imagePath) throws IOException {
+        return pictureService.convertImageToBase64(imagePath);
     }
 }
