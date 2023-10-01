@@ -1,5 +1,6 @@
 package com.example.turbospringproject.dao.entity;
 
+import com.example.turbospringproject.dao.entity.enums.ERole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,5 +17,6 @@ public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private ERole name;
 }
