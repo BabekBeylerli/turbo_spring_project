@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,8 +29,9 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/v1/auth/**").permitAll()
-//                                        .requestMatchers("/v1/user").hasRole("USER")
-//                                        .requestMatchers("/v1/admin").hasRole("ADMIN")
+                                .requestMatchers("v1/public/**").permitAll()
+                                .requestMatchers("/v1/user/**").hasRole("USER")
+                                .requestMatchers("/v1/admin/**").hasRole("ADMIN")
                                 .requestMatchers(permitSwagger).permitAll()
                                 .anyRequest().authenticated());
         http.authenticationProvider(authenticationProvider);
@@ -39,14 +41,22 @@ public class SecurityConfiguration {
     }
     @Bean
     public UserDetailsService userDetailsServicess() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build();
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
 
-        return new InMemoryUserDetailsManager(user);
+        UserDetails user = users
+                .username("user")
+                .password("password")
+                .roles("USER")
+                .authorities("READ")
+                .build();
+
+        UserDetails admin = users
+                .username("admin")
+                .password("password")
+                .roles("ADMIN")
+                .authorities("READ", "CREATE", "DELETE")
+                .build();
+        return new InMemoryUserDetailsManager(user,admin);
     }
     public static String[] permitSwagger = {
             "/api/v1/auth/**",

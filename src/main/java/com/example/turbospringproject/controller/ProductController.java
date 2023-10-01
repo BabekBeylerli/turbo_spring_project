@@ -6,6 +6,7 @@ import com.example.turbospringproject.model.ProductLiteDto;
 import com.example.turbospringproject.service.ProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ProductController {
     }
 
     @GetMapping("/filter")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public Page<ProductLiteDto> getAllProduct(Pageable pageable, ProductFilterDto productFilterDto) {
         return productService.getAllProduct(pageable, productFilterDto);
     }
