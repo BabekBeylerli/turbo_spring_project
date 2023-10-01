@@ -1,8 +1,8 @@
 package com.example.turbospringproject.controller;
 
-import com.example.turbospringproject.model.PictureDto;
 import com.example.turbospringproject.service.PictureService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -18,32 +18,32 @@ public class PictureController {
     }
 
     @GetMapping
-    public List<PictureDto> getAllPicture() {
-        return pictureService.getAllPicture();
+    public ResponseEntity<List<String>> getAllPictures() {
+        List<String> base64Images = pictureService.getAllPictures();
+        return new ResponseEntity<>(base64Images, HttpStatus.OK);
     }
 
-    @GetMapping("{pictureId}")
-    public PictureDto getPicture(@PathVariable Integer pictureId) {
-        return pictureService.getPicture(pictureId);
+    @GetMapping("/{pictureId}")
+    public ResponseEntity<String> getPicture(@PathVariable Integer pictureId) {
+        String base64Image = pictureService.getPicture(pictureId);
+        return new ResponseEntity<>(base64Image, HttpStatus.OK);
     }
 
     @PostMapping
-    public void savePicture(@RequestBody PictureDto pictureDto) {
-        pictureService.savePicture(pictureDto);
+    public ResponseEntity<String> savePicture(@RequestBody String base64Image) {
+        pictureService.savePicture(base64Image);
+        return new ResponseEntity<>("Picture saved successfully", HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public void updatePicture(@RequestBody PictureDto pictureDto, @PathVariable Integer pictureId) {
-        pictureService.editPicture(pictureDto, pictureId);
+    @PutMapping("/{pictureId}")
+    public ResponseEntity<String> updatePicture(@PathVariable Integer pictureId, @RequestBody String base64Image) {
+        pictureService.updatePicture(base64Image, pictureId);
+        return new ResponseEntity<>("Picture updated successfully", HttpStatus.OK);
     }
 
-    @DeleteMapping
-    public void deletePicture(@PathVariable Integer pictureId) {
+    @DeleteMapping("/{pictureId}")
+    public ResponseEntity<String> deletePicture(@PathVariable Integer pictureId) {
         pictureService.deletePicture(pictureId);
-    }
-
-    @GetMapping("/image-to-base64/{imagePath}")
-    public String convertImageToBase64(@PathVariable  String imagePath) throws IOException {
-        return pictureService.convertImageToBase64(imagePath);
+        return new ResponseEntity<>("Picture deleted successfully", HttpStatus.NO_CONTENT);
     }
 }

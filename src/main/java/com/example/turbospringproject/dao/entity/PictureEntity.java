@@ -21,7 +21,6 @@ public class PictureEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String image;
-    private Integer sort;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

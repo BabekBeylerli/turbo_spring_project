@@ -48,7 +48,7 @@ public class ProductService {
                         new RuntimeException("Not Found!")
                 );
         log.info("ActionLog.getProduct.end");
-        return mapper.mapEntityToDto(productEntity);
+        return  ProductMapper.mapper.mapEntityToDto(productEntity);
     }
 
     public void saveProduct(ProductDto productDto) {
