@@ -20,7 +20,7 @@ public class BrandSpecification implements Specification<BrandEntity> {
         if (name == null || name.isEmpty()) {
             return null; // Filtre boşsa hiçbir şey yapma
         }
-        return criteriaBuilder.equal(root.get("name"), name);
+        return criteriaBuilder.like(root.get("name"), name);
     }
 
 }

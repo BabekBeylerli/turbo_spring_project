@@ -19,6 +19,5 @@ import java.util.List;
 public class ModelDto {
     private String name;
 
-    private BrandEntity brand;
-    private List<SubModelEntity> subModels;
+    private List<SubModelDto> subModels;
 }

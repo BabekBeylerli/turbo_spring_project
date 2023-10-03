@@ -1,6 +1,7 @@
 package com.example.turbospringproject.service.auth;
 import com.example.turbospringproject.dao.entity.UserEntity;
 import com.example.turbospringproject.dao.repository.UserRepository;
+import com.example.turbospringproject.mapper.UserMapper;
 import com.example.turbospringproject.model.auth.AuthRequestDto;
 import com.example.turbospringproject.model.auth.AuthenticationDto;
 import com.example.turbospringproject.model.auth.UserRegisterRequestDto;
@@ -22,13 +23,14 @@ public class AuthService {
     private final AuthenticationManager authManager;
     public AuthenticationDto register(UserRegisterRequestDto requestDto) {
         //TODO: unique check exception
-        var user = UserEntity.builder()
+        var user = UserRegisterRequestDto.builder()
                 .phoneNumber(requestDto.getPhoneNumber())
                 .password(passwordEncoder.encode(requestDto.getPassword()))
+                .roles(requestDto.getRoles())
                 .build();
 
-        userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
+        userRepository.save(UserMapper.mapper.mapRegisterRequestDtoToEntity(user));
+        var jwtToken = jwtService.generateToken(UserMapper.mapper.mapRegisterRequestDtoToEntity(user));
         return AuthenticationDto.builder()
                 .token(jwtToken)
                 .build();
@@ -41,7 +43,6 @@ public class AuthService {
                         authRequestDto.getPassword()
                 )
         );
-        log.info("gelib bura");
         UserEntity user = userRepository.findUserByPhoneNumber(authRequestDto.getPhoneNumber()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationDto.builder()

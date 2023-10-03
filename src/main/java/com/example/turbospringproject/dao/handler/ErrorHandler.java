@@ -16,11 +16,11 @@ public class ErrorHandler {
         return new ExceptionDto(notFoundException.getMessage());
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(Exception.class)
-    public ExceptionDto handler(Exception exception) {
-        return new ExceptionDto(exception.getMessage());
-    }
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    @ExceptionHandler(Exception.class)
+//    public ExceptionDto handler(Exception exception) {
+//        return new ExceptionDto(exception.getMessage());
+//    }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ExceptionDto handler(MethodArgumentNotValidException exception) {

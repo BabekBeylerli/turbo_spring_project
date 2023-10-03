@@ -18,6 +18,5 @@ import java.util.List;
 @Builder
 public class BrandDto {
     private String name;
-    private List<ModelEntity> models;
-
+    private List<ModelDto> models;
 }

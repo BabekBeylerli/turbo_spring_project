@@ -16,7 +16,7 @@ import java.util.Set;
 public class UserRegisterRequestDto {
     private String phoneNumber;
     private String password;
-    private Set<RoleEntity> roles;
+    private Set<RoleDto> roles;
 
 }
 
