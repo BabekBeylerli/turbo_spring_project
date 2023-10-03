@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,6 +29,4 @@ public class SupplyDto {
     private boolean rearViewCamera;
     private boolean sideCurtains;
     private boolean seatVentilation;
-
-    private ProductEntity product;
 }

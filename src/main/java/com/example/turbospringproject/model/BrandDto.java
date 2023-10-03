@@ -19,4 +19,5 @@ import java.util.List;
 public class BrandDto {
     private String name;
     private List<ModelDto> models;
+
 }

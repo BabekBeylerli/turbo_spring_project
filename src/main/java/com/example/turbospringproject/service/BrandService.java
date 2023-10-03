@@ -5,14 +5,12 @@ import com.example.turbospringproject.dao.repository.BrandRepository;
 import com.example.turbospringproject.mapper.BrandMapper;
 import com.example.turbospringproject.model.BrandDto;
 import com.example.turbospringproject.model.BrandFilterDto;
-import com.example.turbospringproject.service.specification.BrandSpecification;
+import com.example.turbospringproject.model.BrandLiteDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -23,12 +21,13 @@ public class BrandService {
         this.brandRepository = brandsRepository;
     }
 
-    public List<BrandDto> getAllBrand() {
+    public List<BrandLiteDto> getAllBrand() {
         log.info("ActionLog.getAllBrands.start");
-        List<BrandDto> brandDtos = BrandMapper.mapper.mapEntityToDtos(brandRepository.findAll());
+        List<BrandLiteDto> brandLiteDtos = BrandMapper.mapper.mapEntityToDtos2(brandRepository.findAll());
         log.info("ActionLog.getAllBrands.end");
-        return brandDtos;
+        return brandLiteDtos;
     }
+ //   public BrandLiteDto
 
     public BrandDto getBrand(Integer brandId) {
         log.info("ActionLog.getBrand.start");
@@ -39,6 +38,9 @@ public class BrandService {
                 );
         log.info("ActionLog.getBrand.end");
         return BrandMapper.mapper.mapEntityToDto(brandEntity);
+    }
+    public BrandDto getBrandByName(String name){
+        return BrandMapper.mapper.mapEntityToDto(brandRepository.findByName(name));
     }
 
     public void saveBrand(BrandDto brandDto) {
@@ -59,12 +61,4 @@ public class BrandService {
         log.info("ActionLog.deleteBrand.end");
     }
 
-    public BrandDto getBrandByFilter(BrandFilterDto brandFilterDto) {
-        log.info("ActionLog.getBrand.start");
-        var specification = new BrandSpecification(brandFilterDto.getName());
-        Optional<BrandEntity> brand = brandRepository.findOne(specification);
-        BrandDto brandDto = BrandMapper.mapper.mapEntityToDto(brand.orElse(null));
-        log.info("ActionLog.getBrand.end");
-        return brandDto;
-    }
 }

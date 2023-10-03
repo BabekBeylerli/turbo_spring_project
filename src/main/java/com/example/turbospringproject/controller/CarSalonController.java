@@ -1,7 +1,9 @@
 package com.example.turbospringproject.controller;
 
+import com.example.turbospringproject.dao.entity.enums.ECarSalon;
 import com.example.turbospringproject.model.BrandDto;
 import com.example.turbospringproject.model.CarSalonDto;
+import com.example.turbospringproject.model.CarSalonLiteDto;
 import com.example.turbospringproject.service.CarSalonService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +17,11 @@ public class CarSalonController {
     public CarSalonController(CarSalonService carSalonService) {
         this.carSalonService = carSalonService;
     }
-    @GetMapping
-    public List<CarSalonDto> getAllCarSalon(){
-        return carSalonService.getAllCarSalon();
+    @GetMapping("/bySalonType/{salonType}")
+    public List<CarSalonLiteDto> getAllCarSalon(@PathVariable ECarSalon salonType){
+        return carSalonService.getAllCarSalon(salonType);
     }
-    @GetMapping("{carSalonId}")
+    @GetMapping("/byId/{carSalonId}")
     public CarSalonDto getCarSalon(@PathVariable Integer carSalonId){
         return carSalonService.getCarSalon(carSalonId);
     }

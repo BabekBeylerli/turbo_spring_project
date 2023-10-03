@@ -41,8 +41,4 @@ public class CityController {
         cityService.deleteCity(cityId);
     }
 
-    @GetMapping("/filter")
-    public CityDto getCities(CityFilterDto cityFilterDto) {
-        return cityService.getCities(cityFilterDto);
-    }
 }

@@ -31,7 +31,7 @@ public class ProductService {
     }
 
 
-    public Page<ProductLiteDto> getAllProduct(Pageable pageable, ProductFilterDto productFilterDto) {
+    public Page<ProductLiteDto> getAllProductByFilter(Pageable pageable, ProductFilterDto productFilterDto) {
         Specification<ProductEntity> specification = new ProductSpecification(productFilterDto);
 
         Page<ProductEntity> productPage = productsRepository.findAll(specification, pageable);
@@ -40,7 +40,9 @@ public class ProductService {
         return new PageImpl<>(productLiteDtos, pageable, productPage.getTotalElements());
     }
 
-
+    public List<ProductLiteDto> getAllProduct(){
+        return mapper.mapEntityToLiteDtos2(productsRepository.findAll());
+    }
     public ProductDto getProduct(Integer productId) {
         log.info("ActionLog.getProduct.start");
         ProductEntity productEntity =

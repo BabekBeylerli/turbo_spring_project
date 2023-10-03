@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubModelFilterDto {
+public class BrandLiteDto {
     private String name;
 }

@@ -1,6 +1,7 @@
 package com.example.turbospringproject.service;
 
 import com.example.turbospringproject.dao.entity.CarSalonEntity;
+import com.example.turbospringproject.dao.entity.enums.ECarSalon;
 import com.example.turbospringproject.dao.repository.BrandRepository;
 import com.example.turbospringproject.dao.repository.CarSalonRepository;
 import com.example.turbospringproject.mapper.BrandMapper;
@@ -8,6 +9,7 @@ import com.example.turbospringproject.mapper.CarSalonMapper;
 import com.example.turbospringproject.mapper.CarSalonPhoneMapper;
 import com.example.turbospringproject.model.BrandDto;
 import com.example.turbospringproject.model.CarSalonDto;
+import com.example.turbospringproject.model.CarSalonLiteDto;
 import com.example.turbospringproject.model.CarSalonPhoneDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,12 +26,12 @@ public class CarSalonService {
         this.carSalonsRepository = carSalonsRepository;
     }
 
-    public List<CarSalonDto> getAllCarSalon() {
+    public List<CarSalonLiteDto> getAllCarSalon(ECarSalon type) {
         log.info("ActionLog.getAllCarSalon.start");
-        List<CarSalonDto> carSalonDtos =
-                CarSalonMapper.mapper.mapEntityToDtos(carSalonsRepository.findAll());
+        List<CarSalonLiteDto> carSalonLiteDtos =
+                CarSalonMapper.mapper.mapEntityToDtos2(carSalonsRepository.findAllByType(type));
         log.info("ActionLog.getAllCarSalon.end");
-        return carSalonDtos;
+        return carSalonLiteDtos;
     }
 
     public CarSalonDto getCarSalon(Integer carSalonId) {

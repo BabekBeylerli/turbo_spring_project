@@ -1,12 +1,10 @@
 package com.example.turbospringproject.service;
 
-import com.example.turbospringproject.dao.entity.CityEntity;
 import com.example.turbospringproject.dao.entity.ModelEntity;
 import com.example.turbospringproject.dao.repository.ModelRepository;
 import com.example.turbospringproject.mapper.ModelMapper;
 import com.example.turbospringproject.model.ModelDto;
 import com.example.turbospringproject.model.ModelFilterDto;
-import com.example.turbospringproject.service.specification.ModelSpecification;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -30,16 +28,6 @@ public class ModelService {
         log.info("ActionLog.getAllModel.end");
         return modelDtos;
     }
-
-    public List<ModelDto> getAllFilterModel(ModelFilterDto modelFilterDto) {
-        log.info("ActionLog.getAllFilterModel.start");
-        var specification = Specification.where(new ModelSpecification(modelFilterDto.getName()));
-        List<ModelDto> modelDtos = ModelMapper.mapper.mapEntityToDtos(modelRepository.findAll(specification));
-        log.info("ActionLog.getAllFilterModel.end");
-        return modelDtos;
-    }
-
-
     public ModelDto getModel(Integer modelId) {
         log.info("ActionLog.getModel.start");
         ModelEntity modelEntity =

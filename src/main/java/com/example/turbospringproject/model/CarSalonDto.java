@@ -25,6 +25,6 @@ public class CarSalonDto {
     private Integer productsCount;
     private Integer viewNumber;
     private String location;
-    private List<ProductEntity> product;
-    private List<CarSalonPhoneEntity> phones;
+    private List<ProductLiteDto> product;
+    private List<CarSalonPhoneDto> phones;
 }

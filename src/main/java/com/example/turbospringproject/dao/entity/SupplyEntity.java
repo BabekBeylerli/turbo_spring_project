@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name = "supplies")
 @Entity
@@ -37,8 +38,7 @@ public class SupplyEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @OneToOne
-    @JoinColumn(referencedColumnName = "id")
-    private ProductEntity product;
+    @OneToMany(mappedBy = "supply")
+    private List<ProductEntity> product;
 
 }

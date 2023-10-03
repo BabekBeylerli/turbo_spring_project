@@ -2,6 +2,7 @@ package com.example.turbospringproject.mapper;
 
 import com.example.turbospringproject.dao.entity.CarSalonEntity;
 import com.example.turbospringproject.model.CarSalonDto;
+import com.example.turbospringproject.model.CarSalonLiteDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -18,4 +19,6 @@ public abstract class CarSalonMapper {
     public abstract CarSalonEntity mapDtoToEntity(CarSalonDto carSalonDto, Integer carSalonId);
 
     public abstract List<CarSalonDto> mapEntityToDtos(List<CarSalonEntity> carSalonEntities);
+    public abstract CarSalonLiteDto mapEntityToDto2(CarSalonEntity carSalonEntity);
+    public abstract List<CarSalonLiteDto> mapEntityToDtos2(List<CarSalonEntity> carSalonEntities);
 }

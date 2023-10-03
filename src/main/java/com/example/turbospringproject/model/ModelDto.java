@@ -18,6 +18,6 @@ import java.util.List;
 @Builder
 public class ModelDto {
     private String name;
-
     private List<SubModelDto> subModels;
+
 }

@@ -25,7 +25,7 @@ public class CarSalonEntity {
     private String tittle;
     @Enumerated(EnumType.STRING)
     @Builder.Default
-    private ECarSalon eCarSalon=ECarSalon.SIMPLE;
+    private ECarSalon type=ECarSalon.SIMPLE;
     private String email;
     private String password;
     private String description;

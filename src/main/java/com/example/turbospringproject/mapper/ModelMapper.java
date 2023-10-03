@@ -18,4 +18,5 @@ public abstract class ModelMapper {
     public abstract ModelEntity mapDtoToEntity(ModelDto modelDto);
 
     public abstract List<ModelDto> mapEntityToDtos(List<ModelEntity> modelEntities);
+
 }

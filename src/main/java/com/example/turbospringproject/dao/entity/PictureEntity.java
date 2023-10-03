@@ -25,7 +25,5 @@ public class PictureEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
-    private ProductEntity product;
+
 }

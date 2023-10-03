@@ -56,25 +56,37 @@ public class ProductEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ModelEntity model;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
     private CityEntity city;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
     private CarSalonEntity car;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
     private UserEntity user;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
-    private SubModelEntity model;
+    private SubModelEntity subModel;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
     private CarSituationEntity carSituations;
-    @OneToOne(mappedBy = "product")
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
     private SupplyEntity supply;
-    @OneToMany(mappedBy = "product")
+
+    @OneToMany
     private List<PictureEntity> pictures;
+
 
 
 }

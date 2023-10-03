@@ -26,9 +26,12 @@ public class SubModelEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @ManyToOne(fetch = FetchType.EAGER)
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(referencedColumnName = "id")
+//    private ModelEntity model;
+    @OneToMany(mappedBy = "subModel")
+    private List<ProductEntity> product;
+    @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private ModelEntity model;
-    @OneToMany(mappedBy = "model")
-    private List<ProductEntity> product;
 }

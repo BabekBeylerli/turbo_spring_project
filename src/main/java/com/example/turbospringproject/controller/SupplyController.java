@@ -21,10 +21,6 @@ public class SupplyController {
         return supplyService.getAllSupply();
     }
 
-    @GetMapping("/filter")
-    public List<SupplyDto> getAllFilterSupply(SupplyFilterDto supplyFilterDto) {
-        return supplyService.getAllFilterSupply(supplyFilterDto);
-    }
 
     @GetMapping("{supplyId}")
     public SupplyDto getSupply(@PathVariable Integer supplyId) {

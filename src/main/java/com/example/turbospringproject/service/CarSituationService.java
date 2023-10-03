@@ -1,20 +1,11 @@
 package com.example.turbospringproject.service;
 
 import com.example.turbospringproject.dao.entity.CarSituationEntity;
-import com.example.turbospringproject.dao.entity.ProductEntity;
 import com.example.turbospringproject.dao.repository.CarSituationRepository;
-import com.example.turbospringproject.mapper.CarSalonMapper;
 import com.example.turbospringproject.mapper.CarSituationMapper;
-import com.example.turbospringproject.mapper.ProductMapper;
-import com.example.turbospringproject.model.CarSalonDto;
 import com.example.turbospringproject.model.CarSituationDto;
 import com.example.turbospringproject.model.CarSituationFilterDto;
-import com.example.turbospringproject.model.ProductLiteDto;
-import com.example.turbospringproject.service.specification.CarSituationSpecification;
-import com.example.turbospringproject.service.specification.ProductSpecification;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -67,12 +58,7 @@ public class CarSituationService {
 
     }
 
-    public List<CarSituationDto> getFilteredCarSituations(CarSituationFilterDto carSituationFilterDto) {
-        Specification<CarSituationEntity> specification = new CarSituationSpecification(carSituationFilterDto);
-        List<CarSituationEntity> carSituationEntities = carSituationRepository.findAll(specification);
-        List<CarSituationDto> carSituationDtos = CarSituationMapper.mapper.mapEntityToDtos(carSituationEntities);
-        return carSituationDtos;
-    }
+
 
 
 }

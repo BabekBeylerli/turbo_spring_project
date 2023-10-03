@@ -22,8 +22,12 @@ public class ProductController {
 
     @GetMapping("/filter")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public Page<ProductLiteDto> getAllProduct(Pageable pageable, ProductFilterDto productFilterDto) {
-        return productService.getAllProduct(pageable, productFilterDto);
+    public Page<ProductLiteDto> getAllProductByFilter(Pageable pageable, ProductFilterDto productFilterDto) {
+        return productService.getAllProductByFilter(pageable, productFilterDto);
+    }
+    @GetMapping
+    public List<ProductLiteDto> getAllProduct(){
+        return productService.getAllProduct();
     }
 
     @GetMapping("{productId}")

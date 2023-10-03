@@ -37,11 +37,11 @@ public class ProductDto {
 
     private LocalDateTime updateAt;
 
-    private CityEntity city;
+    private CityDto city;
 
-    private CarSalonEntity car;
+    private CarSalonDto car;
 
-    private UserEntity user;
+    private UserDto user;
 
     private SubModelEntity model;
     private CarSituationEntity carSituations;

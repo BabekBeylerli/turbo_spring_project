@@ -22,7 +22,5 @@ public class CarSituationDto {
     private boolean credit;
     private boolean barter;
 
-    private List<ProductEntity> product;
-
 
 }

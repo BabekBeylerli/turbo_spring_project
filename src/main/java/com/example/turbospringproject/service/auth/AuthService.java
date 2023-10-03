@@ -22,7 +22,6 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authManager;
     public AuthenticationDto register(UserRegisterRequestDto requestDto) {
-        //TODO: unique check exception
         var user = UserRegisterRequestDto.builder()
                 .phoneNumber(requestDto.getPhoneNumber())
                 .password(passwordEncoder.encode(requestDto.getPassword()))

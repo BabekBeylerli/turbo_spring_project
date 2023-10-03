@@ -24,12 +24,6 @@ public class CarSituationController {
 
     }
 
-    @GetMapping("filter")
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    public List<CarSituationDto> getFilteredCarSituations(CarSituationFilterDto carSituationFilterDto) {
-        return carSituationService.getFilteredCarSituations(carSituationFilterDto);
-    }
-
     @GetMapping("{carSituationId}")
     public CarSituationDto getCarSituation(@PathVariable Integer carSituationId) {
         return carSituationService.getCarSituation(carSituationId);

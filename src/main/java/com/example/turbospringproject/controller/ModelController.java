@@ -21,10 +21,7 @@ public class ModelController {
         return modelService.getAllModel();
     }
 
-    @GetMapping("/filter")
-    public List<ModelDto> getAllFilterModel(ModelFilterDto modelFilterDto) {
-        return modelService.getAllFilterModel(modelFilterDto);
-    }
+
 
     @GetMapping("{modelId}")
     public ModelDto getModel(@PathVariable Integer modelId) {
