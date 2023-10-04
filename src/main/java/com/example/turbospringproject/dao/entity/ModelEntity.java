@@ -26,11 +26,12 @@ public class ModelEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @OneToMany(mappedBy = "model")
+    @OneToMany(mappedBy = "model",
+              fetch=FetchType.EAGER)
     private List<ProductEntity> product;
     @OneToMany(mappedBy = "model"
             ,fetch = FetchType.EAGER)
-    private List<SubModelEntity> subModels;
+    private List<SubModelEntity> subModel;
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private BrandEntity brand;

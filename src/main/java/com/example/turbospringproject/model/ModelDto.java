@@ -19,5 +19,4 @@ import java.util.List;
 public class ModelDto {
     private String name;
     private List<SubModelDto> subModels;
-
 }

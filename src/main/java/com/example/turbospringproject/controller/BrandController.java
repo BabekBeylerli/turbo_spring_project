@@ -1,7 +1,6 @@
 package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.BrandDto;
-import com.example.turbospringproject.model.BrandFilterDto;
 import com.example.turbospringproject.model.BrandLiteDto;
 import com.example.turbospringproject.service.BrandService;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +30,8 @@ public class BrandController {
         return brandsService.getBrandByName(brandName);
     }
     @PostMapping
-    public void saveBrand(@RequestBody BrandDto brandDto) {
-        brandsService.saveBrand(brandDto);
-    }
-
-    @PutMapping
-    public void updateBrand(@RequestBody BrandDto brandDto, @PathVariable Integer brandId) {
-        brandsService.editBrand(brandDto, brandId);
+    public void saveBrand(@RequestBody BrandLiteDto brandLiteDto) {
+        brandsService.saveBrand(brandLiteDto);
     }
 
     @DeleteMapping

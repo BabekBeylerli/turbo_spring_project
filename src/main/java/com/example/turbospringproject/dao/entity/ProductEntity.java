@@ -86,6 +86,9 @@ public class ProductEntity {
 
     @OneToMany
     private List<PictureEntity> pictures;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private BrandEntity brand;
 
 
 

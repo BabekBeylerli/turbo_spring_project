@@ -15,5 +15,4 @@ import java.util.List;
 @Builder
 public class SubModelDto {
     private String name;
-
 }

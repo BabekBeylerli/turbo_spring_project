@@ -29,8 +29,6 @@ public class ProductService {
         this.productsRepository = productsRepository;
 
     }
-
-
     public Page<ProductLiteDto> getAllProductByFilter(Pageable pageable, ProductFilterDto productFilterDto) {
         Specification<ProductEntity> specification = new ProductSpecification(productFilterDto);
 

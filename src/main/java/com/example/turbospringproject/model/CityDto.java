@@ -15,5 +15,4 @@ import java.util.List;
 @Builder
 public class CityDto {
     private String name;
-    private List<ProductLiteDto> product;
 }

@@ -4,9 +4,8 @@ import com.example.turbospringproject.dao.entity.ModelEntity;
 import com.example.turbospringproject.dao.repository.ModelRepository;
 import com.example.turbospringproject.mapper.ModelMapper;
 import com.example.turbospringproject.model.ModelDto;
-import com.example.turbospringproject.model.ModelFilterDto;
+import com.example.turbospringproject.model.ModelLiteDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,17 +37,13 @@ public class ModelService {
         return ModelMapper.mapper.mapEntityToDto(modelEntity);
     }
 
-    public void saveModel(ModelDto modelDto) {
+    public void saveModel(ModelLiteDto modelDto) {
         log.info("ActionLog.saveModel.start");
         modelRepository.save(ModelMapper.mapper.mapDtoToEntity(modelDto));
         log.info("ActionLog.saveModel.end");
     }
 
-    public void editModel(ModelDto modelDto, Integer modelId) {
-        log.info("ActionLog.editModel.start");
-        modelRepository.save(ModelMapper.mapper.mapDtoToEntity(modelDto, modelId));
-        log.info("ActionLog.editModel.end");
-    }
+
 
     public void deleteModel(Integer modelId) {
         log.info("ActionLog.deleteModel.start");

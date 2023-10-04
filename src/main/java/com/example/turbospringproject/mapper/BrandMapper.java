@@ -14,13 +14,12 @@ public abstract class BrandMapper {
     public static BrandMapper mapper = Mappers.getMapper(BrandMapper.class);
 
     public abstract BrandDto mapEntityToDto(BrandEntity brandEntity);
-
     public abstract BrandEntity mapDtoToEntity(BrandDto brandDto);
-
+    public abstract BrandEntity mapDtoToEntity(BrandDto brandDto, Integer brandId);
     public abstract List<BrandDto> mapEntityToDtos(List<BrandEntity> brandEntities);
     public abstract BrandLiteDto mapEntityToDto2(BrandEntity brandEntity);
-
+    public abstract BrandEntity mapDtoToEtity2(BrandLiteDto brandLiteDto);
     public abstract List<BrandLiteDto> mapEntityToDtos2(List<BrandEntity> brandEntities);
 
-    public abstract BrandEntity mapDtoToEntity(BrandDto brandDto, Integer brandId);
+
 }

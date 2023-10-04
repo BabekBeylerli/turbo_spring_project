@@ -1,6 +1,7 @@
 package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.SubModelDto;
+import com.example.turbospringproject.model.SubModelLiteDto;
 import com.example.turbospringproject.service.SubModelService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +17,6 @@ public class SubModelController {
         this.subModelService = subModelService;
     }
 
-    @GetMapping
-    public List<SubModelDto> getAllSubModel() {
-        return subModelService.getAllSubModel();
-    }
-
     @GetMapping("{subModelId}")
     public SubModelDto getSubModel(@PathVariable Integer subModelId) {
         return subModelService.getSubModel(subModelId);
@@ -28,16 +24,10 @@ public class SubModelController {
 
 
     @PostMapping
-    public void saveSubModel(@RequestBody SubModelDto subModelDto) {
-        subModelService.saveSubModel(subModelDto);
+    public void saveSubModel(@RequestBody SubModelLiteDto subModelLiteDto) {
+        subModelService.saveSubModel(subModelLiteDto);
     }
-
-    @PutMapping
-    public void updateSubModel(@RequestBody SubModelDto subModelDto, Integer subModelId) {
-        subModelService.editSubModel(subModelDto, subModelId);
-    }
-
-    @DeleteMapping
+    @DeleteMapping("/{subModelId}")
     public void deleteSubModel(@PathVariable Integer subModelId) {
         subModelService.deleteSubModel(subModelId);
     }

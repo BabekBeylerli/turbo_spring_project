@@ -1,6 +1,7 @@
 package com.example.turbospringproject.model;
 
 import com.example.turbospringproject.dao.entity.*;
+import com.example.turbospringproject.dao.entity.enums.ProductActiveStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,18 +35,15 @@ public class ProductDto {
     private Integer viewCount;
     private String activeStatus;
     private LocalDateTime createdAt;
-
     private LocalDateTime updateAt;
-
-    private CityDto city;
-
-    private CarSalonDto car;
-
-    private UserDto user;
-
-    private SubModelEntity model;
-    private CarSituationEntity carSituations;
-    private SupplyEntity supply;
+    private Integer cityId;
+    private Integer brandId;
+    private Integer modelId;
+    private Integer subModelId;
+    private Integer carSalonId;
+    private Integer userId;
+    private CarSituationDto carSituations;
+    private SupplyDto supply;
     private List<PictureEntity> pictures;
 
 

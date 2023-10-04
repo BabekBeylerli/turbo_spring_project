@@ -1,10 +1,7 @@
 package com.example.turbospringproject.controller;
 
-import com.example.turbospringproject.model.CarSalonPhoneDto;
 import com.example.turbospringproject.model.CarSituationDto;
-import com.example.turbospringproject.model.CarSituationFilterDto;
 import com.example.turbospringproject.service.CarSituationService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

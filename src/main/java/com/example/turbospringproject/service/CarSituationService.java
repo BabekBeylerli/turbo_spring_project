@@ -4,9 +4,7 @@ import com.example.turbospringproject.dao.entity.CarSituationEntity;
 import com.example.turbospringproject.dao.repository.CarSituationRepository;
 import com.example.turbospringproject.mapper.CarSituationMapper;
 import com.example.turbospringproject.model.CarSituationDto;
-import com.example.turbospringproject.model.CarSituationFilterDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

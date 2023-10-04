@@ -20,25 +20,11 @@ public class ModelController {
     public List<ModelDto> getAllModel() {
         return modelService.getAllModel();
     }
-
-
-
-    @GetMapping("{modelId}")
-    public ModelDto getModel(@PathVariable Integer modelId) {
-        return modelService.getModel(modelId);
-    }
-
     @PostMapping
-    public void saveModel(@RequestBody ModelDto modelDto) {
+    public void saveModel(@RequestBody ModelLiteDto modelDto) {
         modelService.saveModel(modelDto);
     }
-
-    @PutMapping
-    public void updateModel(@RequestBody ModelDto modelDto, @PathVariable Integer modelId) {
-        modelService.editModel(modelDto, modelId);
-    }
-
-    @DeleteMapping
+    @DeleteMapping("/{modelId}")
     public void deleteModel(@PathVariable Integer modelId) {
         modelService.deleteModel(modelId);
     }

@@ -4,13 +4,11 @@ import com.example.turbospringproject.dao.entity.BrandEntity;
 import com.example.turbospringproject.dao.repository.BrandRepository;
 import com.example.turbospringproject.mapper.BrandMapper;
 import com.example.turbospringproject.model.BrandDto;
-import com.example.turbospringproject.model.BrandFilterDto;
 import com.example.turbospringproject.model.BrandLiteDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -43,16 +41,10 @@ public class BrandService {
         return BrandMapper.mapper.mapEntityToDto(brandRepository.findByName(name));
     }
 
-    public void saveBrand(BrandDto brandDto) {
+    public void saveBrand(BrandLiteDto brandLiteDto) {
         log.info("ActionLog.saveBrand.start");
-        brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto));
+        brandRepository.save(BrandMapper.mapper.mapDtoToEtity2(brandLiteDto));
         log.info("ActionLog.saveBrand.end");
-    }
-
-    public void editBrand(BrandDto brandDto, Integer brandId) {
-        log.info("ActionLog.editBrand.start");
-        brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto, brandId));
-        log.info("ActionLog.editBrand.end4");
     }
 
     public void deleteBrand(Integer brandId) {

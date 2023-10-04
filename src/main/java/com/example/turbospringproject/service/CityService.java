@@ -4,12 +4,10 @@ import com.example.turbospringproject.dao.entity.CityEntity;
 import com.example.turbospringproject.dao.repository.CityRepository;
 import com.example.turbospringproject.mapper.CityMapper;
 import com.example.turbospringproject.model.CityDto;
-import com.example.turbospringproject.model.CityFilterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j

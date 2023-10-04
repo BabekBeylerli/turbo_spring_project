@@ -4,6 +4,7 @@ import com.example.turbospringproject.dao.entity.SubModelEntity;
 import com.example.turbospringproject.dao.repository.SubModelRepository;
 import com.example.turbospringproject.mapper.SubModelMapper;
 import com.example.turbospringproject.model.SubModelDto;
+import com.example.turbospringproject.model.SubModelLiteDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -21,15 +22,6 @@ public class SubModelService {
         this.subModelRepository = subModelRepository;
     }
 
-    public List<SubModelDto> getAllSubModel() {
-        log.info("ActionLog.getAllSubModel.start");
-        List<SubModelDto> subModelDtos =
-                SubModelMapper.mapper.mapEntityToDtos(subModelRepository.findAll());
-        log.info("ActionLog.getAllSubModel.end");
-        return subModelDtos;
-    }
-
-
 
     public SubModelDto getSubModel(Integer subModelId) {
         log.info("ActionLog.getSubModel.start");
@@ -41,17 +33,13 @@ public class SubModelService {
         return SubModelMapper.mapper.mapEntityToDto(subModelEntity);
     }
 
-    public void saveSubModel(SubModelDto subModelDto) {
+    public void saveSubModel(SubModelLiteDto subModelLiteDto) {
         log.info("ActionLog.saveSubModel.start");
-        subModelRepository.save(SubModelMapper.mapper.mapDtoToEntity(subModelDto));
+        subModelRepository.save(SubModelMapper.mapper.mapLiteDtoToEntity(subModelLiteDto));
         log.info("ActionLog.saveSubModel.end");
     }
 
-    public void editSubModel(SubModelDto subModelDto, Integer subModelId) {
-        log.info("ActionLog.editSubModel.start");
-        subModelRepository.save(SubModelMapper.mapper.mapDtoToEntity(subModelDto, subModelId));
-        log.info("ActionLog.editSubModel.end");
-    }
+
 
     public void deleteSubModel(Integer subModelId) {
         log.info("ActionLog.deleteSubModel.start");

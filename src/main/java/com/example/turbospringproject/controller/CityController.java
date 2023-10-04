@@ -1,7 +1,6 @@
 package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.CityDto;
-import com.example.turbospringproject.model.CityFilterDto;
 import com.example.turbospringproject.service.CityService;
 import org.springframework.web.bind.annotation.*;
 

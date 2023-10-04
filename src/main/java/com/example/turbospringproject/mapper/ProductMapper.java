@@ -18,26 +18,18 @@ public abstract class ProductMapper {
 
     public abstract ProductDto mapEntityToDto(ProductEntity productEntity);
 
+    @Mapping(target = "city.id", source = "cityId")
+    @Mapping(target = "brand.id", source = "brandId")
+    @Mapping(target = "brand.model.id", source = "modelId")
+    @Mapping(target = "brand.model.subModel.id", source = "subModelId")
+    @Mapping(target = "user.id", source = "userId")
+    @Mapping(target = "car.id", source = "carSalonId")
     public abstract ProductEntity mapDtoToEntity(ProductDto productDto);
 
     public abstract ProductEntity mapDtoToEntity(ProductDto productDto,Integer productId);
 
     public abstract List<ProductDto> mapEntityToDtos(List<ProductEntity> productEntities);
 
-
-//    @Mapping(target="price",source = "price")
-//    @Mapping(target="priceType",source = "priceType")
-//    @Mapping(target="year",source="year")
-//    @Mapping(target="engineVolume",source="engineVolume")
-//    @Mapping(target="march",source="march")
-//    @Mapping(target="marchType",source="marchType")
-//    @Mapping(target="createdAt",source="createdAt")
-//    @Mapping(target="brandName",source="model.brand.name")
-//    @Mapping(target="modelName",source = "model.name")
-//    @Mapping(target="subModelName",source="model.subModels.name")
-//    @Mapping(target="cityName",source="city.name")
-//    @Mapping(target="picture",source = "pictures.image")
-//    public abstract ProductLiteDto mapEntityToLiteDto2(ProductEntity productEntity);
     @Mapping(target="price",source = "price")
     @Mapping(target="priceType",source = "priceType")
     @Mapping(target="year",source="year")

@@ -30,5 +30,8 @@ public class BrandEntity {
     @OneToMany(fetch = FetchType.EAGER
             ,cascade = CascadeType.ALL
             ,mappedBy = "brand")
-    private List<ModelEntity> models;
+    private List<ModelEntity> model;
+    @OneToMany(mappedBy = "brand"
+              ,fetch=FetchType.EAGER)
+    private List<ProductEntity> product;
 }

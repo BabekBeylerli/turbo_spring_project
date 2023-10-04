@@ -4,9 +4,7 @@ import com.example.turbospringproject.dao.entity.SupplyEntity;
 import com.example.turbospringproject.dao.repository.SupplyRepository;
 import com.example.turbospringproject.mapper.SupplyMapper;
 import com.example.turbospringproject.model.SupplyDto;
-import com.example.turbospringproject.model.SupplyFilterDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
