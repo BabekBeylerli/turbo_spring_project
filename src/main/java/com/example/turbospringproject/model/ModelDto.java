@@ -17,7 +17,6 @@ import java.util.List;
 @Data
 @Builder
 public class ModelDto {
-    private Integer id;
     private String name;
-    private List<SubModelDto> subModels;
+    private List<SubModelDto> subModel;
 }

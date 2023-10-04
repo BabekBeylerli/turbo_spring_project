@@ -27,7 +27,6 @@ public class BrandEntity {
     @UpdateTimestamp
     private LocalDateTime updateAt;
     @OneToMany(fetch = FetchType.EAGER
-            ,cascade = CascadeType.ALL
             ,mappedBy = "brand")
     private List<ModelEntity> model;
     @OneToMany(mappedBy = "brand"

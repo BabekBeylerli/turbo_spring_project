@@ -20,24 +20,4 @@ public class CarSituationController {
         return carSituationService.getAllCarSituation();
 
     }
-
-    @GetMapping("{carSituationId}")
-    public CarSituationDto getCarSituation(@PathVariable Integer carSituationId) {
-        return carSituationService.getCarSituation(carSituationId);
-    }
-
-    @PostMapping
-    public void saveCarSituation(@RequestBody CarSituationDto carSituationDto) {
-        carSituationService.saveCarSituation(carSituationDto);
-    }
-
-    @PutMapping
-    public void updateCarSituation(@RequestBody CarSituationDto carSituationDto, @PathVariable Integer carSituationId) {
-        carSituationService.editCarSituation(carSituationDto, carSituationId);
-    }
-
-    @DeleteMapping
-    public void deleteCarSituation(@PathVariable Integer carSituationId) {
-        carSituationService.deleteCarSituation(carSituationId);
-    }
 }

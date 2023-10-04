@@ -21,23 +21,4 @@ public class SupplyController {
     }
 
 
-    @GetMapping("{supplyId}")
-    public SupplyDto getSupply(@PathVariable Integer supplyId) {
-        return supplyService.getSupply(supplyId);
-    }
-
-    @PostMapping
-    public void saveSupply(@RequestBody SupplyDto supplyDto) {
-        supplyService.saveSupply(supplyDto);
-    }
-
-    @PutMapping
-    public void updateSupply(@RequestBody SupplyDto supplyDto, @PathVariable Integer supplyId) {
-        supplyService.editSupply(supplyDto, supplyId);
-    }
-
-    @DeleteMapping
-    public void deleteSupply(@PathVariable Integer supplyId) {
-        supplyService.deleteSupply(supplyId);
-    }
 }

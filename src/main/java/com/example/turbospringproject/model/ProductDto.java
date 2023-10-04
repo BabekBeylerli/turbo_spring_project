@@ -1,6 +1,7 @@
 package com.example.turbospringproject.model;
 
 import com.example.turbospringproject.dao.entity.*;
+import com.example.turbospringproject.dao.entity.enums.EProduct;
 import com.example.turbospringproject.dao.entity.enums.PriceType;
 import com.example.turbospringproject.dao.entity.enums.ProductActiveStatus;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 @Data
 @Builder
 public class ProductDto {
-    private String type;
+    private EProduct type;
     private String banType;
     private Double march;
     private String marchType;
