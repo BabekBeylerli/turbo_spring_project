@@ -56,37 +56,35 @@ public class ProductEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id")
     private ModelEntity model;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id")
     private CityEntity city;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id")
     private CarSalonEntity car;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id")
     private UserEntity user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id")
     private SubModelEntity subModel;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.PERSIST)
     private CarSituationEntity carSituations;
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.PERSIST)
     private SupplyEntity supply;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<PictureEntity> pictures;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id")
     private BrandEntity brand;
 

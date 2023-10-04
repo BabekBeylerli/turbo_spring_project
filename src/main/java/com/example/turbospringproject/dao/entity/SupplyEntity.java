@@ -38,7 +38,7 @@ public class SupplyEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @OneToMany(mappedBy = "supply")
-    private List<ProductEntity> product;
+    @OneToOne(mappedBy = "supply")
+    private ProductEntity product;
 
 }

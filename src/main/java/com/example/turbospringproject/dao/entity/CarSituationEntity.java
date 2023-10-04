@@ -30,7 +30,8 @@ public class CarSituationEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
-    @OneToMany(mappedBy = "carSituations")
-    private List<ProductEntity> product;
+    @OneToOne(mappedBy = "carSituations")
+    @JoinColumn(referencedColumnName = "id")
+    private ProductEntity product;
 
 }

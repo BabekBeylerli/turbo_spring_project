@@ -28,7 +28,7 @@ public class SubModelEntity {
     private LocalDateTime updateAt;
     @OneToMany(mappedBy = "subModel")
     private List<ProductEntity> product;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(referencedColumnName = "id")
     private ModelEntity model;
 }

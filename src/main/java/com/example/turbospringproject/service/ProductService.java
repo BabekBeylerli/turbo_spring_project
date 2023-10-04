@@ -39,7 +39,7 @@ public class ProductService {
     }
 
     public List<ProductLiteDto> getAllProduct(){
-        return mapper.mapEntityToLiteDtos2(productsRepository.findAll());
+        return ProductMapper.mapper.mapEntityToLiteDtos2(productsRepository.findAll());
     }
     public ProductDto getProduct(Integer productId) {
         log.info("ActionLog.getProduct.start");
@@ -50,6 +50,7 @@ public class ProductService {
         log.info("ActionLog.getProduct.end");
         return  ProductMapper.mapper.mapEntityToDto(productEntity);
     }
+
 
     public void saveProduct(ProductDto productDto) {
         log.info("ActionLog.saveProduct.start");

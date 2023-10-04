@@ -34,7 +34,7 @@ public class ProductDto {
     private String vinCode;
     private String description;
     private Integer viewCount;
-    private String activeStatus;
+    private ProductActiveStatus activeStatus;
     private LocalDateTime createdAt;
     private LocalDateTime updateAt;
     private Integer cityId;
@@ -45,7 +45,5 @@ public class ProductDto {
     private Integer userId;
     private CarSituationDto carSituations;
     private SupplyDto supply;
-    private List<PictureEntity> pictures;
-
-
+    private List<PictureDto> pictures;
 }

@@ -14,5 +14,6 @@ import java.util.List;
 @Data
 @Builder
 public class SubModelDto {
+    private Integer id;
     private String name;
 }

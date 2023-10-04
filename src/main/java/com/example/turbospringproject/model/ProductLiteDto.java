@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,5 +26,5 @@ public class ProductLiteDto {
     private String modelName;
     private String subModelName;
     private String cityName;
-    private String picture;
+    private List<PictureDto> pictures;
 }

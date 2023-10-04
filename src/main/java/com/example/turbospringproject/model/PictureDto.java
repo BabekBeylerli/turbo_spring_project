@@ -14,4 +14,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PictureDto {
     private String image;
+    private Integer sort;
 }
