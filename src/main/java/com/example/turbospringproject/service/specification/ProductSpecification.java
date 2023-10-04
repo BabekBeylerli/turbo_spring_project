@@ -1,6 +1,7 @@
 package com.example.turbospringproject.service.specification;
 
 import com.example.turbospringproject.dao.entity.*;
+import com.example.turbospringproject.dao.entity.enums.ProductOwnerType;
 import com.example.turbospringproject.model.ProductFilterDto;
 import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
@@ -55,6 +56,16 @@ public class ProductSpecification implements Specification<ProductEntity> {
         }
         if (productFilterDto.getSeatsNumber() != null) {
             predicates.add(criteriaBuilder.equal(root.get("seatsNumber"), productFilterDto.getSeatsNumber()));
+        }
+        if (productFilterDto.getProductOwnerType() != null) {
+            Join<ProductEntity, CarSalonEntity> carSalonJoin = root.join("car", JoinType.INNER);
+            Join<ProductEntity, UserEntity> userJoin = root.join("user", JoinType.INNER);
+
+            if (productFilterDto.getProductOwnerType() == ProductOwnerType.USER) {
+                predicates.add(criteriaBuilder.isNotNull(userJoin.get("id")));
+            } else if (productFilterDto.getProductOwnerType() == ProductOwnerType.CAR_SALON) {
+                predicates.add(criteriaBuilder.isNotNull(carSalonJoin.get("id")));
+            }
         }
 
         // SubModelEntity'ye filtre eklemek için

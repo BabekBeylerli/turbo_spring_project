@@ -1,5 +1,6 @@
 package com.example.turbospringproject.model;
 
+import com.example.turbospringproject.dao.entity.enums.ProductOwnerType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,5 +47,6 @@ public class ProductFilterDto {
     private boolean rearViewCamera;
     private boolean sideCurtains;
     private boolean seatVentilation;
+    private ProductOwnerType productOwnerType;
 
 }
