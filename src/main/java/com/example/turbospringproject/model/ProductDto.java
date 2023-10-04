@@ -1,6 +1,7 @@
 package com.example.turbospringproject.model;
 
 import com.example.turbospringproject.dao.entity.*;
+import com.example.turbospringproject.dao.entity.enums.PriceType;
 import com.example.turbospringproject.dao.entity.enums.ProductActiveStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class ProductDto {
     private String marchType;
     private String color;
     private Double price;
-    private String priceType;
+    private PriceType priceType;
     private Integer owners;
     private String fuelType;
     private String gear;
