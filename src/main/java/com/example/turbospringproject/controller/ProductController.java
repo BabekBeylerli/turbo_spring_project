@@ -36,7 +36,7 @@ public class ProductController {
         productService.saveProduct(productDto);
     }
 
-    @PutMapping
+    @PutMapping("")
     public void updateProduct(@RequestBody ProductDto productDto, Integer productId) {
         productService.editProduct(productDto, productId);
     }
