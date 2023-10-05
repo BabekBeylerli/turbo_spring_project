@@ -20,24 +20,11 @@ public class ProductSpecification implements Specification<ProductEntity> {
     public Predicate toPredicate(Root<ProductEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
 
-        if (productFilterDto.getColor() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("color"), productFilterDto.getColor()));
-        }
-
         if (productFilterDto.getUpPrice() != null && productFilterDto.getDownPrice() != null) {
             predicates.add(criteriaBuilder.between(root.get("price"), productFilterDto.getDownPrice(), productFilterDto.getUpPrice()));
         }
         if (productFilterDto.getPriceType() != null) {
             predicates.add(criteriaBuilder.equal(root.get("priceType"), productFilterDto.getPriceType()));
-        }
-        if (productFilterDto.getFuelType() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("fuelType"), productFilterDto.getFuelType()));
-        }
-        if (productFilterDto.getGear() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("gear"), productFilterDto.getGear()));
-        }
-        if (productFilterDto.getGearBox() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("gearBox"), productFilterDto.getGearBox()));
         }
         if (productFilterDto.getUpEngineVolume() != null && productFilterDto.getDownEngineVolume() != null) {
             predicates.add(criteriaBuilder.between(root.get("engineVolume"), productFilterDto.getDownEngineVolume(), productFilterDto.getUpEngineVolume()));
@@ -45,17 +32,8 @@ public class ProductSpecification implements Specification<ProductEntity> {
         if (productFilterDto.getUpEnginePower() != null && productFilterDto.getDownEnginePower() != null) {
             predicates.add(criteriaBuilder.between(root.get("enginePower"), productFilterDto.getDownEnginePower(), productFilterDto.getUpEnginePower()));
         }
-        if (productFilterDto.getOwners() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("owners"), productFilterDto.getOwners()));
-        }
         if (productFilterDto.getUpYear() != null && productFilterDto.getDownYear() != null) {
             predicates.add(criteriaBuilder.between(root.get("year"), productFilterDto.getDownYear(), productFilterDto.getUpYear()));
-        }
-        if (productFilterDto.getMarket() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("market"), productFilterDto.getMarket()));
-        }
-        if (productFilterDto.getSeatsNumber() != null) {
-            predicates.add(criteriaBuilder.equal(root.get("seatsNumber"), productFilterDto.getSeatsNumber()));
         }
         if (productFilterDto.getProductOwnerType() != null) {
             Join<ProductEntity, CarSalonEntity> carSalonJoin = root.join("car", JoinType.INNER);
@@ -66,6 +44,51 @@ public class ProductSpecification implements Specification<ProductEntity> {
             } else if (productFilterDto.getProductOwnerType() == ProductOwnerType.CAR_SALON) {
                 predicates.add(criteriaBuilder.isNotNull(carSalonJoin.get("id")));
             }
+        }
+        if (productFilterDto.getFuelType() != null && !productFilterDto.getFuelType().isEmpty()) {
+            Expression<String> fuelTypeExpression = root.get("fuelType");
+            Predicate fuelTypePredicate = fuelTypeExpression.in(productFilterDto.getFuelType());
+            predicates.add(fuelTypePredicate);
+        }
+
+        if (productFilterDto.getGear() != null && !productFilterDto.getGear().isEmpty()) {
+            Expression<String> gearExpression = root.get("gear");
+            Predicate gearPredicate = gearExpression.in(productFilterDto.getGear());
+            predicates.add(gearPredicate);
+        }
+
+        if (productFilterDto.getGearBox() != null && !productFilterDto.getGearBox().isEmpty()) {
+            Expression<String> gearBoxExpression = root.get("gearBox");
+            Predicate gearBoxPredicate = gearBoxExpression.in(productFilterDto.getGearBox());
+            predicates.add(gearBoxPredicate);
+        }
+
+        if (productFilterDto.getOwners() != null) {
+            Expression<Integer> ownersExpression = root.get("owners");
+            Predicate ownersPredicate = ownersExpression.in(productFilterDto.getOwners());
+            predicates.add(ownersPredicate);
+        }
+
+        if (productFilterDto.getSeatsNumber() != null) {
+            Expression<Integer> seatNumberExpression = root.get("seatsNumber");
+            Predicate seatNumberPredicate = seatNumberExpression.in(productFilterDto.getSeatsNumber());
+            predicates.add(seatNumberPredicate);
+        }
+
+        if (productFilterDto.getMarket() != null && !productFilterDto.getMarket().isEmpty()) {
+            Expression<String> marketExpression = root.get("market");
+            Predicate marketPredicate = marketExpression.in(productFilterDto.getMarket());
+            predicates.add(marketPredicate);
+        }
+        if (productFilterDto.getBanType() != null && !productFilterDto.getBanType().isEmpty()) {
+            Expression<String> banTypeExpression = root.get("banType");
+            Predicate banTypePredicate = banTypeExpression.in(productFilterDto.getBanType());
+            predicates.add(banTypePredicate);
+        }
+        if (productFilterDto.getColor() != null && !productFilterDto.getColor().isEmpty()) {
+            Expression<String> banTypeExpression = root.get("color");
+            Predicate colorPredicate = banTypeExpression.in(productFilterDto.getColor());
+            predicates.add(colorPredicate);
         }
 
         // SubModelEntity'ye filtre eklemek için

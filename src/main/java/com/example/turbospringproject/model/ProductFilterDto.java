@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductFilterDto {
+    private String banType;
     private String color;
     private Double upPrice;
     private Double downPrice;
