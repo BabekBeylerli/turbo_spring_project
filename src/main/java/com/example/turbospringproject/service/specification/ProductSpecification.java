@@ -107,9 +107,11 @@ public class ProductSpecification implements Specification<ProductEntity> {
         }
 
         // CityEntity'ye filtre eklemek için
-        if (productFilterDto.getCityName() != null) {
+        if (productFilterDto.getCityName() != null && !productFilterDto.getCityName().isEmpty()) {
             Join<ProductEntity, CityEntity> cityJoin = root.join("city", JoinType.INNER);
-            predicates.add(criteriaBuilder.equal(cityJoin.get("name"), productFilterDto.getCityName()));
+            Expression<String> cityExpression = root.get("city");
+            Predicate cityPredicate = cityExpression.in(productFilterDto.getCityName());
+            predicates.add(cityPredicate);
         }
 
         // ModelEntity'ye filtre eklemek için
