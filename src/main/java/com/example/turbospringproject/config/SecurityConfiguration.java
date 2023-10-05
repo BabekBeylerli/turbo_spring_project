@@ -28,10 +28,17 @@ public class SecurityConfiguration {
         http.csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/v1/auth/**").permitAll()
-                                .requestMatchers("v1/products/public/**").permitAll()
-                                .requestMatchers("/v1/user/**").hasRole("USER")
-                                .requestMatchers("/v1/admin/**").hasRole("ADMIN")
+                        auth.requestMatchers("/v1/auth/register").permitAll()
+                                .requestMatchers("/v1/auth/login").permitAll()
+                                .requestMatchers("/v1/auth/user/**").hasRole("USER")
+                                .requestMatchers("/v1/products/public/**").permitAll()
+                                .requestMatchers("/v1/carSalons/public/**").permitAll()
+                                .requestMatchers("/v1/products/user/**").hasAnyRole("USER","ADMIN")
+                                .requestMatchers("/v1/brands/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/v1/carSalons/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/v1/cities/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/v1/models/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/v1/subModels/admin/**").hasRole("ADMIN")
                                 .requestMatchers(permitSwagger).permitAll()
                                 .anyRequest().authenticated());
         http.authenticationProvider(authenticationProvider);

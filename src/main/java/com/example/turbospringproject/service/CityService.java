@@ -46,7 +46,12 @@ public class CityService {
 
     public void editCity(CityDto cityDto, Integer cityId) {
         log.info("ActionLog.editCity.start");
-        cityRepository.save(CityMapper.mapper.mapDtoToEntity(cityDto, cityId));
+        CityEntity existingCity = cityRepository.findById(cityId).orElse(null);
+        if (existingCity != null) {
+            existingCity.setName(cityDto.getName());
+            cityRepository.saveAndFlush(existingCity);
+        }
+
         log.info("ActionLog.editCity.end");
     }
 

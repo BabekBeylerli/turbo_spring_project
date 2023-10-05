@@ -2,6 +2,7 @@ package com.example.turbospringproject.controller;
 
 import com.example.turbospringproject.model.CityDto;
 import com.example.turbospringproject.service.CityService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,17 +26,20 @@ public class CityController {
         return cityService.getCity(cityId);
     }
 
-    @PostMapping
+    @PostMapping("/admin")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public void saveCity(@RequestBody CityDto cityDto) {
         cityService.saveCity(cityDto);
     }
 
-    @PutMapping
+    @PutMapping("/admin/{cityId}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public void updateCity(@RequestBody CityDto cityDto, @PathVariable Integer cityId) {
         cityService.editCity(cityDto, cityId);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/admin/{cityId}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public void deleteCity(@PathVariable Integer cityId) {
         cityService.deleteCity(cityId);
     }

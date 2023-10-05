@@ -15,6 +15,6 @@ import java.util.Set;
 @Builder
 public class UserDto {
     private String phoneNumber;
-    private double balance;
-    private Set<RoleDto> roles;
+    private Double balance;
+    private String email;
 }
