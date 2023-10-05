@@ -1,5 +1,6 @@
 package com.example.turbospringproject.model;
 
+import com.example.turbospringproject.dao.entity.enums.EProduct;
 import com.example.turbospringproject.dao.entity.enums.ProductOwnerType;
 import lombok.AllArgsConstructor;
 import lombok.Data;

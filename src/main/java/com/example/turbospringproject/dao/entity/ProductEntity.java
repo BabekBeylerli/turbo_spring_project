@@ -21,13 +21,13 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)
     @Builder.Default
+    @JoinColumn(name = "e_product")
     private EProduct eProduct=EProduct.SIMPLE;
     private String banType;
     private Double march;

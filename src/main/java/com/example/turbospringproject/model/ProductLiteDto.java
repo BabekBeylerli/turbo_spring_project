@@ -1,5 +1,6 @@
 package com.example.turbospringproject.model;
 
+import com.example.turbospringproject.dao.entity.enums.EProduct;
 import com.example.turbospringproject.dao.entity.enums.PriceType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +23,10 @@ public class ProductLiteDto {
     private Double march;
     private String marchType;
     private LocalDateTime createdAt;
+    private EProduct eProduct;
+    private Integer carSalonId;
+    private Boolean credit;
+    private Boolean barter;
     private String brandName;
     private String modelName;
     private String subModelName;

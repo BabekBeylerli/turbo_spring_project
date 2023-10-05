@@ -41,10 +41,14 @@ public abstract class ProductMapper {
     @Mapping(target="march",source="march")
     @Mapping(target="marchType",source="marchType")
     @Mapping(target="createdAt",source="createdAt")
+    @Mapping(target="eProduct",source="EProduct")
     @Mapping(target="brandName",source="brand.name")
     @Mapping(target="modelName",source = "model.name")
     @Mapping(target="subModelName",source="subModel.name")
     @Mapping(target="cityName",source="city.name")
+    @Mapping(target="barter",source="carSituations.barter")
+    @Mapping(target="credit",source="carSituations.credit")
+    @Mapping(target="carSalonId",source="car.id")
     public abstract ProductLiteDto mapEntityToLiteDto(ProductEntity productEntity);
     @Mapping(target="price",source = "price")
     @Mapping(target="priceType",source = "priceType")
@@ -57,6 +61,10 @@ public abstract class ProductMapper {
     @Mapping(target="modelName",source = "model.name")
     @Mapping(target="subModelName",source="subModel.name")
     @Mapping(target="cityName",source="city.name")
+    @Mapping(target="barter",source="carSituations.barter")
+    @Mapping(target="credit",source="carSituations.credit")
+    @Mapping(target="carSalonId",source="car.id")
+    @Mapping(target="eProduct",source="EProduct")
     public abstract List<ProductLiteDto> mapEntityToLiteDtos2(List<ProductEntity> productEntities);
 
 

@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @Builder
 public class ProductDto {
-    private EProduct type;
+    private EProduct eProduct;
     private String banType;
     private Double march;
     private String marchType;

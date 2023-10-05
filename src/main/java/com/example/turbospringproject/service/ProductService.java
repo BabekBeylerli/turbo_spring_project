@@ -8,9 +8,7 @@ import com.example.turbospringproject.model.ProductFilterDto;
 import com.example.turbospringproject.model.ProductLiteDto;
 import com.example.turbospringproject.service.specification.ProductSpecification;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +29,14 @@ public class ProductService {
     }
     public Page<ProductLiteDto> getAllProductByFilter(Pageable pageable, ProductFilterDto productFilterDto) {
         Specification<ProductEntity> specification = new ProductSpecification(productFilterDto);
+        Sort sort = Sort.by(Sort.Order.desc("eProduct"));
 
-        Page<ProductEntity> productPage = productsRepository.findAll(specification, pageable);
+        Pageable pageableWithSorting = PageRequest.of(
+                pageable.getPageNumber(),
+                pageable.getPageSize(),
+                sort
+        );
+        Page<ProductEntity> productPage = productsRepository.findAll(specification, pageableWithSorting);
         List<ProductLiteDto> productLiteDtos = ProductMapper.mapper.mapEntityToLiteDtos2(productPage.getContent());
 
         return new PageImpl<>(productLiteDtos, pageable, productPage.getTotalElements());
