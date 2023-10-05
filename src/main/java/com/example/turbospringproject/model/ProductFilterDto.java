@@ -6,27 +6,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductFilterDto {
-    private String banType;
-    private String color;
+    private List<String> banType;
+    private List<String> color;
     private Double upPrice;
     private Double downPrice;
     private String priceType;
-    private String fuelType;
-    private String gear;
-    private String gearBox;
+    private List<String> fuelType;
+    private List<String> gear;
+    private List<String> gearBox;
     private Double upEngineVolume;
     private Double downEngineVolume;
     private Integer upEnginePower;
     private Integer downEnginePower;
-    private Integer owners;
+    private List<Integer> owners;
     private Integer upYear;
     private Integer downYear;
-    private String market;
-    private Integer seatsNumber;
+    private List<String> market;
+    private List<Integer> seatsNumber;
     private String subModelName;
     private String brandName;
     private String cityName;
