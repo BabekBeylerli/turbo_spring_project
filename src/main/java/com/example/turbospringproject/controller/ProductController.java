@@ -31,18 +31,19 @@ public class ProductController {
     }
 
     @PostMapping("/user")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public void saveProduct(@RequestBody ProductDto productDto) {
         productService.saveProduct(productDto);
     }
 
-    @PutMapping("")
+    @PutMapping("/user/{productId}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public void updateProduct(@RequestBody ProductDto productDto, Integer productId) {
         productService.editProduct(productDto, productId);
     }
 
-    @DeleteMapping()
-    @PreAuthorize("hasRole('USER')")
+    @DeleteMapping("/user/{productId}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public void deleteProduct(@PathVariable Integer productId) {
         productService.deleteProduct(productId);
     }

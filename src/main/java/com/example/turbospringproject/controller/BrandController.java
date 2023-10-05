@@ -3,6 +3,7 @@ package com.example.turbospringproject.controller;
 import com.example.turbospringproject.model.BrandDto;
 import com.example.turbospringproject.model.BrandLiteDto;
 import com.example.turbospringproject.service.BrandService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,12 +30,14 @@ public class BrandController {
     public BrandDto getBrandByName(@PathVariable String brandName){
         return brandsService.getBrandByName(brandName);
     }
-    @PostMapping
+    @PostMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public void saveBrand(@RequestBody BrandLiteDto brandLiteDto) {
         brandsService.saveBrand(brandLiteDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/admin/{brandId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteBrand(@PathVariable Integer brandId) {
         brandsService.deleteBrand(brandId);
     }

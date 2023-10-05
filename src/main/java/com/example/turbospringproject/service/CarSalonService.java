@@ -52,9 +52,26 @@ public class CarSalonService {
 
     public void editCarSalon(CarSalonDto carSalonDto, Integer carSalonId) {
         log.info("ActionLog.editCarSalon.start");
-        carSalonsRepository.save(CarSalonMapper.mapper.mapDtoToEntity(carSalonDto, carSalonId));
+
+        CarSalonEntity existingCarSalon = carSalonsRepository.findById(carSalonId).orElse(null);
+        if (existingCarSalon != null) {
+            existingCarSalon.setTittle(carSalonDto.getTittle());
+            existingCarSalon.setType(carSalonDto.getType());
+            existingCarSalon.setDescription(carSalonDto.getDescription());
+            existingCarSalon.setDescription1(carSalonDto.getDescription1());
+            existingCarSalon.setDescription2(carSalonDto.getDescription2());
+            existingCarSalon.setLogo(carSalonDto.getLogo());
+            existingCarSalon.setImage(carSalonDto.getImage());
+            existingCarSalon.setProductsCount(carSalonDto.getProductsCount());
+            existingCarSalon.setViewNumber(carSalonDto.getViewNumber());
+            existingCarSalon.setLocation(carSalonDto.getLocation());
+
+            carSalonsRepository.saveAndFlush(existingCarSalon);
+        }
+
         log.info("ActionLog.editCarSalon.end");
     }
+
 
     public void deleteCarSalon(Integer carSalonId) {
         log.info("ActionLog.deleteCarSalon.start");

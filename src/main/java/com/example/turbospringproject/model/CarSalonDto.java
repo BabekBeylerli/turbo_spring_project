@@ -2,6 +2,7 @@ package com.example.turbospringproject.model;
 
 import com.example.turbospringproject.dao.entity.CarSalonPhoneEntity;
 import com.example.turbospringproject.dao.entity.ProductEntity;
+import com.example.turbospringproject.dao.entity.enums.ECarSalon;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +17,7 @@ import java.util.List;
 @Builder
 public class CarSalonDto {
     private String tittle;
-    private String type;
+    private ECarSalon type;
     private String description;
     private String description1;
     private String description2;

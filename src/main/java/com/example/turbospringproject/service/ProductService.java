@@ -64,9 +64,38 @@ public class ProductService {
 
     public void editProduct(ProductDto productDto, Integer productId) {
         log.info("ActionLog.editProduct.start");
-        productsRepository.save(mapper.mapDtoToEntity(productDto, productId));
+
+        // productId ile var olan ProductEntity'yi alın
+        ProductEntity existingProduct = productsRepository.findById(productId).orElse(null);
+
+        if (existingProduct != null) {
+            existingProduct.setEProduct(productDto.getEProduct());
+            existingProduct.setBanType(productDto.getBanType());
+            existingProduct.setMarch(productDto.getMarch());
+            existingProduct.setMarchType(productDto.getMarchType());
+            existingProduct.setColor(productDto.getColor());
+            existingProduct.setPrice(productDto.getPrice());
+            existingProduct.setPriceType(productDto.getPriceType());
+            existingProduct.setOwners(productDto.getOwners());
+            existingProduct.setFuelType(productDto.getFuelType());
+            existingProduct.setGear(productDto.getGear());
+            existingProduct.setGearBox(productDto.getGearBox());
+            existingProduct.setYear(productDto.getYear());
+            existingProduct.setEngineVolume(productDto.getEngineVolume());
+            existingProduct.setEnginePower(productDto.getEnginePower());
+            existingProduct.setMarket(productDto.getMarket());
+            existingProduct.setSeatsNumber(productDto.getSeatsNumber());
+            existingProduct.setVinCode(productDto.getVinCode());
+            existingProduct.setDescription(productDto.getDescription());
+            existingProduct.setViewCount(productDto.getViewCount());
+            existingProduct.setProductActiveStatus(productDto.getActiveStatus());
+
+            productsRepository.saveAndFlush(existingProduct);
+        }
+
         log.info("ActionLog.editProduct.end");
     }
+
 
     public void deleteProduct(Integer productId) {
         log.info("ActionLog.deleteProduct.start");
