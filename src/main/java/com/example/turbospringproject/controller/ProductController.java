@@ -20,22 +20,18 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/filter")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @GetMapping("/public/filter")
     public Page<ProductLiteDto> getAllProductByFilter(Pageable pageable, ProductFilterDto productFilterDto) {
         return productService.getAllProductByFilter(pageable, productFilterDto);
     }
-    @GetMapping
-    public List<ProductLiteDto> getAllProduct(){
-        return productService.getAllProduct();
-    }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/public/{productId}")
     public ProductDto getProduct(@PathVariable Integer productId) {
         return productService.getProduct(productId);
     }
 
-    @PostMapping
+    @PostMapping("/user")
+    @PreAuthorize("hasRole('USER')")
     public void saveProduct(@RequestBody ProductDto productDto) {
         productService.saveProduct(productDto);
     }
@@ -45,7 +41,8 @@ public class ProductController {
         productService.editProduct(productDto, productId);
     }
 
-    @DeleteMapping
+    @DeleteMapping()
+    @PreAuthorize("hasRole('USER')")
     public void deleteProduct(@PathVariable Integer productId) {
         productService.deleteProduct(productId);
     }

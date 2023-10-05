@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/v1/auth/**").permitAll()
-                                .requestMatchers("v1/public/**").permitAll()
+                                .requestMatchers("v1/products/public/**").permitAll()
                                 .requestMatchers("/v1/user/**").hasRole("USER")
                                 .requestMatchers("/v1/admin/**").hasRole("ADMIN")
                                 .requestMatchers(permitSwagger).permitAll()
