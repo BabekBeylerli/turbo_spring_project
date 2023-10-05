@@ -31,7 +31,7 @@ public class ProductFilterDto {
     private List<Integer> seatsNumber;
     private String subModelName;
     private String brandName;
-    private String cityName;
+    private List<String> cityName;
     private String modelName;
     private boolean stroke;
     private boolean colored;

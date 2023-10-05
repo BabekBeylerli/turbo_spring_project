@@ -51,6 +51,7 @@ public class ProductSpecification implements Specification<ProductEntity> {
             predicates.add(fuelTypePredicate);
         }
 
+
         if (productFilterDto.getGear() != null && !productFilterDto.getGear().isEmpty()) {
             Expression<String> gearExpression = root.get("gear");
             Predicate gearPredicate = gearExpression.in(productFilterDto.getGear());
