@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create car_situation table
+      author: Babek Beylerli, Nicat Mammadli
+      changes:
+        - createTable:
+            tableName: car_situation
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: id of car_situation
+              - column:
+                  name: update_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record updated
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record created
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    - foreignKey:
+                        baseColumnNames: product_id
+                        baseTableName: car_situation
+                        referencedColumnNames: id
+                        referencedTableName: products
+                        constraintName: fk_products_to_car_situation
+              - column:
+                  name: accident
+                  type: boolean
+                  defaultValue: false
+                  remarks: information about car_situation accident
+              - column:
+                  name: barter
+                  type: boolean
+                  defaultValue: false
+                  remarks: information about car_situation barter
+              - column:
+                  name: colored
+                  type: boolean
+                  defaultValue: false
+                  remarks: information about car_situation colored
+              - column:
+                  name: credit
+                  type: boolean
+                  defaultValue: false
+                  remarks: information about car_situation credit
+              - column:
+                  name: stroke
+                  type: boolean
+                  defaultValue: false
+                  remarks: information about car_situation stroke
+            remarks: Table to store information about car_situation.

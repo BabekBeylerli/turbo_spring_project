@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create roles table
+      author: Babek Beylerli,Nicat Mammadli
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+            remarks: Role Table

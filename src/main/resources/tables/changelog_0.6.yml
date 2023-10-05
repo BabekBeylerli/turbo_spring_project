@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create models table
+      author: Babek Beylerli, Nicat Mammadli
+      changes:
+        - createTable:
+            tableName: models
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: id of models
+              - column:
+                  name: update_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record updated
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record created
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    nullable: false
+                  remarks: information about a model name
+              - column:
+                  name: brand_id
+                  type: bigint
+                  constraints:
+                    - foreignKey:
+                        baseColumnNames: brand_id
+                        baseTableName: models
+                        referencedColumnNames: id
+                        referencedTableName: brands
+                        constraintName: fk_brands_to_models
+            remarks: Table to store information about models.

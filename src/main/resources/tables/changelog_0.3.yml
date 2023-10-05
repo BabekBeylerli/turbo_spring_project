@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create car_salon_phones table
+      author: Babek Beylerli, Nicat Mammadli
+      changes:
+        - createTable:
+            tableName: car_salon_phones
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: id of car_salon_phones
+              - column:
+                  name: update_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record updated
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record created
+              - column:
+                  name: car_salon_id
+                  type: bigint
+                  constraints:
+                    - foreignKey:
+                        baseColumnNames: car_salon_id
+                        baseTableName: car_salon_phones
+                        referencedColumnNames: id
+                        referencedTableName: car_salons
+                        constraintName: fk_car_salon_phones_to_car_salons
+              - column:
+                  name: number
+                  type: varchar
+                  remarks: information about car_salons numbers
+            remarks: Table to store information about car_salon_phones.

@@ -1,0 +1,85 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create car_salons table
+      author: Babek Beylerli, Nicat Mammadli
+      changes:
+        - createTable:
+            tableName: car_salons
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: id of car_salons
+              - column:
+                  name: products_count
+                  type: bigint
+                  defaultValue: 0
+                  remarks: count of products
+              - column:
+                  name: view_number
+                  type: bigint
+                  defaultValue: 0
+                  remarks: count of views
+              - column:
+                  name: update_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record updated
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record created
+              - column:
+                  name: description
+                  type: varchar
+                  remarks: provides general information about car salon
+              - column:
+                  name: active_time
+                  type: varchar
+                  remarks: shows working time
+              - column:
+                  name: remark
+                  type: varchar
+                  remarks: it keeps certain records
+              - column:
+                  name: email
+                  type: varchar
+                  constraints:
+                    unique: true
+                  remarks: save emails
+              - column:
+                  name: image
+                  type: text
+                  remarks: it keeps pictures
+              - column:
+                  name: location
+                  type: varchar
+                  remarks: it keeps location
+              - column:
+                  name: logo
+                  type: text
+                  remarks: it keeps logo
+              - column:
+                  name: password
+                  type: text
+                  constraints:
+                    nullable: false
+                  remarks: it keeps passwords
+              - column:
+                  name: title
+                  type: varchar
+                  constraints:
+                    nullable: false
+                  remarks: it keeps name car_salons
+              - column:
+                  name: type
+                  type: varchar
+                  constraints:
+                    nullable: false
+                  remarks: it keeps type
+            remarks: Table to store information about car_salons.

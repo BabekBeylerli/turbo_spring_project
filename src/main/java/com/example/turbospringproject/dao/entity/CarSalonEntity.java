@@ -25,7 +25,7 @@ public class CarSalonEntity {
     private String tittle;
     @Enumerated(EnumType.STRING)
     @Builder.Default
-    private ECarSalon type=ECarSalon.SIMPLE;
+    private ECarSalon type = ECarSalon.SIMPLE;
     private String email;
     private String password;
     private String description;
@@ -42,7 +42,8 @@ public class CarSalonEntity {
     private LocalDateTime updateAt;
     @OneToMany(mappedBy = "car")
     private List<ProductEntity> product;
-    @OneToMany
+    @OneToMany(mappedBy = "carSalon",
+            cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<CarSalonPhoneEntity> phones;
 
 }

@@ -1,0 +1,42 @@
+databaseChangeLog:
+- changeSet:
+    id: Create sub_models table
+    author: Babek Beylerli,Nicat Mammadli
+    changes:
+      - createTable:
+          tableName: sub_models
+          columns:
+            - column:
+                name: id
+                type: INT
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: name
+                type: VARCHAR(255)
+                constraints:
+                  nullable: false
+            - column:
+                name: created_at
+                type: TIMESTAMP
+                constraints:
+                  nullable: false
+            - column:
+                name: updated_at
+                type: TIMESTAMP
+                constraints:
+                  nullable: false
+            - column:
+                name: model_id
+                type: INT
+                constraints:
+                  nullable: false
+            - addForeignKeyConstraint:
+                baseTableName: sub_models
+                baseColumnNames: model_id
+                constraintName: fk_sub_models_models
+                referencedTableName: models
+                referencedColumnNames: id
+                onDelete: CASCADE
+                onUpdate: CASCADE

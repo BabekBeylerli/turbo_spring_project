@@ -25,5 +25,8 @@ public class CarSalonPhoneEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updateAt;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private CarSalonEntity carSalon;
 
 }

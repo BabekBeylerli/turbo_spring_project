@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create user_roles table
+      author: Babek Beylerli,Nicat Mammadli
+      changes:
+        - createTable:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: INTEGER
+                  constraints:
+                    primaryKey: true
+                    references: private_users(id)
+              - column:
+                  name: role_id
+                  type: INTEGER
+                  constraints:
+                    primaryKey: true
+                    references: roles(id)
