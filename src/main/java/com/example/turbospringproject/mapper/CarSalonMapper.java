@@ -21,4 +21,5 @@ public abstract class CarSalonMapper {
     public abstract List<CarSalonDto> mapEntityToDtos(List<CarSalonEntity> carSalonEntities);
     public abstract CarSalonLiteDto mapEntityToDto2(CarSalonEntity carSalonEntity);
     public abstract List<CarSalonLiteDto> mapEntityToDtos2(List<CarSalonEntity> carSalonEntities);
+    public abstract CarSalonEntity mapLiteDtoToEntity(CarSalonLiteDto carSalonLiteDto);
 }

@@ -36,17 +36,19 @@ public class CarSalonService {
 
     public CarSalonDto getCarSalon(Integer carSalonId) {
         log.info("ActionLog.getCarSalon.start");
-        CarSalonEntity carSalonEntity =
-                carSalonsRepository.findById(carSalonId).orElseThrow(() ->
-                        new RuntimeException("NotFound")
-                );
+        CarSalonEntity carSalonEntity = carSalonsRepository.findById(carSalonId).orElseThrow(() ->
+                new RuntimeException("NotFound")
+        );
         log.info("ActionLog.getCarSalon.end");
+        int currentViewNumber = carSalonEntity.getViewNumber();
+        carSalonEntity.setViewNumber(currentViewNumber + 1);
+        carSalonsRepository.save(carSalonEntity);
         return CarSalonMapper.mapper.mapEntityToDto(carSalonEntity);
     }
 
-    public void saveCarSalon(CarSalonDto carSalonDto) {
+    public void saveCarSalon(CarSalonLiteDto carSalonLiteDto) {
         log.info("ActionLog.saveCarSalon.start");
-        carSalonsRepository.save(CarSalonMapper.mapper.mapDtoToEntity(carSalonDto));
+        carSalonsRepository.save(CarSalonMapper.mapper.mapLiteDtoToEntity(carSalonLiteDto));
         log.info("ActionLog.saveCarSalon.end");
     }
 

@@ -29,8 +29,8 @@ public class CarSalonController {
     }
     @PostMapping("/admin")
     @PreAuthorize("hasAnyRole('ADMIN')")
-    public void saveCarSalon(@RequestBody CarSalonDto carSalonDto){
-        carSalonService.saveCarSalon(carSalonDto);
+    public void saveCarSalon(@RequestBody CarSalonLiteDto carSalonLiteDto){
+        carSalonService.saveCarSalon(carSalonLiteDto);
     }
     @PutMapping("/admin/{carSalonId}")
     @PreAuthorize("hasAnyRole('ADMIN')")

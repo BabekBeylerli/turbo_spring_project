@@ -35,7 +35,8 @@ public class UserEntity implements UserDetails {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

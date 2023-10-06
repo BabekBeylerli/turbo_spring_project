@@ -51,6 +51,9 @@ public class ProductService {
                 productsRepository.findById(productId).orElseThrow(() ->
                         new RuntimeException("Not Found!")
                 );
+        int currentViewNumber = productEntity.getViewCount();
+        productEntity.setViewCount(currentViewNumber + 1);
+        productsRepository.save(productEntity);
         log.info("ActionLog.getProduct.end");
         return  ProductMapper.mapper.mapEntityToDto(productEntity);
     }
