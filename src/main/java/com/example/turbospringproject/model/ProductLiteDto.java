@@ -16,6 +16,7 @@ import java.util.List;
 @Data
 @Builder
 public class ProductLiteDto {
+    private Integer id;
     private Double price;
     private PriceType priceType;
     private Integer year;
