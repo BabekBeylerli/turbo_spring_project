@@ -41,10 +41,9 @@ public class CarSalonEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car",fetch = FetchType.EAGER)
     private List<ProductEntity> product;
-    @OneToMany(mappedBy = "carSalon",
-            cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy ="carSalon",cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<CarSalonPhoneEntity> phones;
 
 }
