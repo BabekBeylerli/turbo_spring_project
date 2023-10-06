@@ -1,6 +1,7 @@
 package com.example.turbospringproject.model;
 
 import com.example.turbospringproject.dao.entity.enums.ECarSalon;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class CarSalonLiteDto {
     private String logo;
     private String image;
     private Integer productsCount;
+    @Min(value = 0)
     private Integer viewNumber;
     private String location;
     private List<CarSalonPhoneDto> phones;

@@ -1,15 +1,18 @@
 package com.example.turbospringproject.dao.entity;
 
+import com.example.turbospringproject.dao.entity.enums.EMarch;
 import com.example.turbospringproject.dao.entity.enums.EProduct;
 import com.example.turbospringproject.dao.entity.enums.PriceType;
 import com.example.turbospringproject.dao.entity.enums.ProductActiveStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.repository.cdi.Eager;
 
 import java.time.LocalDateTime;
@@ -31,7 +34,9 @@ public class ProductEntity {
     private EProduct eProduct=EProduct.SIMPLE;
     private String banType;
     private Double march;
-    private String marchType;
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private EMarch marchType=EMarch.km;
     private String color;
     private Double price;
     @Enumerated(EnumType.STRING)
@@ -48,7 +53,7 @@ public class ProductEntity {
     private Integer seatsNumber;
     private String vinCode;
     private String description;
-    private Integer viewCount;
+    private Integer viewCount=0;
     @Enumerated(EnumType.STRING)
     @Builder.Default
     private ProductActiveStatus productActiveStatus=ProductActiveStatus.PENDING;

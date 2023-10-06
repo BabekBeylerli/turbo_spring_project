@@ -2,6 +2,10 @@ package com.example.turbospringproject.dao.entity;
 
 import com.example.turbospringproject.dao.entity.enums.ECarSalon;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,7 +33,6 @@ public class CarSalonEntity {
     private String email;
     private String password;
     private String description;
-
     private String activeTime;
     private String remark;
     private String logo;

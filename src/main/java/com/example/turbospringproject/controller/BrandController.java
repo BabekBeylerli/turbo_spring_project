@@ -32,8 +32,8 @@ public class BrandController {
     }
     @PostMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
-    public void saveBrand(@RequestBody BrandLiteDto brandLiteDto) {
-        brandsService.saveBrand(brandLiteDto);
+    public void saveBrand(@RequestBody BrandDto brandDto) {
+        brandsService.saveBrand(brandDto);
     }
 
     @DeleteMapping("/admin/{brandId}")

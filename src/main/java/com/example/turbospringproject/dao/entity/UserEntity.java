@@ -1,6 +1,10 @@
 package com.example.turbospringproject.dao.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,10 +30,10 @@ public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "phone_number", length = 10)
     private String phoneNumber;
     private String email;
     private double balance;
+
     private String password;
     @CreationTimestamp
     private LocalDateTime createdAt;

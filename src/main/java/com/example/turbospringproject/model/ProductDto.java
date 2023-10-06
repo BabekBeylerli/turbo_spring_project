@@ -1,6 +1,7 @@
 package com.example.turbospringproject.model;
 
 import com.example.turbospringproject.dao.entity.*;
+import com.example.turbospringproject.dao.entity.enums.EMarch;
 import com.example.turbospringproject.dao.entity.enums.EProduct;
 import com.example.turbospringproject.dao.entity.enums.PriceType;
 import com.example.turbospringproject.dao.entity.enums.ProductActiveStatus;
@@ -19,7 +20,7 @@ public class ProductDto {
     private EProduct eProduct;
     private String banType;
     private Double march;
-    private String marchType;
+    private EMarch marchType;
     private String color;
     private Double price;
     private PriceType priceType;

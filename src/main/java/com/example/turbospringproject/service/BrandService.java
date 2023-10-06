@@ -41,9 +41,9 @@ public class BrandService {
         return BrandMapper.mapper.mapEntityToDto(brandRepository.findByName(name));
     }
 
-    public void saveBrand(BrandLiteDto brandLiteDto) {
+    public void saveBrand(BrandDto brandDto) {
         log.info("ActionLog.saveBrand.start");
-        brandRepository.save(BrandMapper.mapper.mapDtoToEtity2(brandLiteDto));
+        brandRepository.save(BrandMapper.mapper.mapDtoToEntity(brandDto));
         log.info("ActionLog.saveBrand.end");
     }
 

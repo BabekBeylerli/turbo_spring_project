@@ -4,6 +4,7 @@ import com.example.turbospringproject.dao.entity.CarSalonPhoneEntity;
 import com.example.turbospringproject.dao.entity.ProductEntity;
 import com.example.turbospringproject.dao.entity.enums.ECarSalon;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class CarSalonDto {
     private String logo;
     private String image;
     private Integer productsCount;
+    @Min(value = 0)
     private Integer viewNumber;
     private String location;
     private List<ProductLiteDto> product;

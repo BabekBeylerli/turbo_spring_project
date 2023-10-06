@@ -1,6 +1,7 @@
 package com.example.turbospringproject.dao.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class CityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Should contain only alphabetic characters.")
     private String name;
     @CreationTimestamp
     private LocalDateTime createdAt;
