@@ -57,5 +57,9 @@ databaseChangeLog:
                   name: updated_at
                   type: timestamp
                   defaultValueComputed: 'CURRENT_TIMESTAMP'
+              - addAutoIncrement:
+                  tableName: car_salons
+                  columnDataType: int
+                  columnName: id
 
 

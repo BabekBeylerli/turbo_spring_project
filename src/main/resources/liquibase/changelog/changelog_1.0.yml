@@ -1,77 +1,23 @@
 databaseChangeLog:
   - changeSet:
-      id: create-products-table
+      id: Create pictures table
       author: Babek Beylerli
       changes:
         - createTable:
-            tableName: products
+            tableName: pictures
             columns:
               - column:
                   name: id
-                  type: INTEGER
+                  type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
               - column:
-                  name: e_product
-                  type: VARCHAR(40)
-              - column:
-                  name: ban_type
-                  type: VARCHAR(40)
-              - column:
-                  name: march
-                  type: DOUBLE
-              - column:
-                  name: march_type
-                  type: VARCHAR(40)
-              - column:
-                  name: color
-                  type: VARCHAR(40)
-              - column:
-                  name: price
-                  type: DOUBLE
-              - column:
-                  name: price_type
-                  type: VARCHAR(10)
-              - column:
-                  name: owners
-                  type: INTEGER
-              - column:
-                  name: fuel_type
-                  type: VARCHAR(25)
-              - column:
-                  name: gear
-                  type: VARCHAR(50)
-              - column:
-                  name: gear_box
-                  type: VARCHAR(50)
-              - column:
-                  name: year
-                  type: INTEGER
-              - column:
-                  name: engine_volume
-                  type: DOUBLE
-              - column:
-                  name: engine_power
-                  type: INTEGER
-              - column:
-                  name: market
-                  type: VARCHAR(30)
-              - column:
-                  name: seats_number
-                  type: INTEGER
-              - column:
-                  name: vin_code
-                  type: VARCHAR(255)
-              - column:
-                  name: description
+                  name: image
                   type: text
               - column:
-                  name: view_count
-                  type: INTEGER
-              - column:
-                  name: product_active_status
-                  type: VARCHAR(50)
+                  name: sort
+                  type: int
               - column:
                   name: created_at
                   type: timestamp
@@ -81,67 +27,9 @@ databaseChangeLog:
                   type: timestamp
                   defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
-                  name: model_id
-                  type: INTEGER
-              - column:
-                  name: city_id
-                  type: INTEGER
-              - column:
-                  name: car_id
-                  type: INTEGER
-              - column:
-                  name: user_id
-                  type: INTEGER
-              - column:
-                  name: sub_model_id
-                  type: INTEGER
-              - column:
-                  name: car_situations_id
-                  type: INTEGER
-              - column:
-                  name: supply_id
-                  type: INTEGER
-              - column:
-                  name: brand_id
-                  type: INTEGER
-            foreignKeyConstraints:
-              - foreignKeyConstraint:
-                  baseColumnNames: model_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: model
-              - foreignKeyConstraint:
-                  baseColumnNames: city_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: city
-              - foreignKeyConstraint:
-                  baseColumnNames: car_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: car_salon
-              - foreignKeyConstraint:
-                  baseColumnNames: user_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: private_users
-              - foreignKeyConstraint:
-                  baseColumnNames: sub_model_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: sub_model
-              - foreignKeyConstraint:
-                  baseColumnNames: car_situations_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: car_situation
-              - foreignKeyConstraint:
-                  baseColumnNames: supply_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: supply
-              - foreignKeyConstraint:
-                  baseColumnNames: brand_id
-                  baseTableName: products
-                  referencedColumnNames: id
-                  referencedTableName: brand
+                  name: product_id
+                  type: int
+                  constraints:
+                    foreignKeyName: FK_Picture_Product
+                    references: products(id)
+                    onDelete: CASCADE
