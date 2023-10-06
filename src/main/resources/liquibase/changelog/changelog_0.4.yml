@@ -17,12 +17,12 @@ databaseChangeLog:
               - column:
                   name: update_at
                   type: timestamp
-                  defaultValue: now()
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
                   remarks: When the record updated
               - column:
                   name: created_at
                   type: timestamp
-                  defaultValue: now()
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
                   remarks: When the record created
               - column:
                   name: product_id

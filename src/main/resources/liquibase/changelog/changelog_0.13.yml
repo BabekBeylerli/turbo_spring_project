@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: Create supplies table
-      author: Babek Beylerli,Nicat Mammadli
+      author: Babek Beylerli, Nicat Mammadli
       changes:
         - createTable:
             tableName: supplies
@@ -17,66 +17,79 @@ databaseChangeLog:
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: abs
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: hatch
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: rain_sensor
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: central_locking
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: parking_radar
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: air_conditioning
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: seat_heating
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: leather_salon
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: xenon_lamps
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: rear_view_camera
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: side_curtains
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: seat_ventilation
                   type: BOOLEAN
                   constraints:
                     nullable: false
+                  defaultValue: false
               - column:
                   name: created_at
                   type: TIMESTAMP

@@ -3,8 +3,8 @@ spring:
     change-log: classpath:liquibase/changelog-master.yml
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
   datasource:
     url: jdbc:postgresql://localhost:5432/turbo_spring_project
     username: postgres
-    password: 12345
+    password: "12345"
