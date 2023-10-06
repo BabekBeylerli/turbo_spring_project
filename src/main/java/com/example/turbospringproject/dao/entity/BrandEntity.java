@@ -25,7 +25,7 @@ public class BrandEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @OneToMany(fetch = FetchType.EAGER
             ,mappedBy = "brand")
     private List<ModelEntity> model;

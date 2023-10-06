@@ -34,7 +34,7 @@ public class UserEntity implements UserDetails {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

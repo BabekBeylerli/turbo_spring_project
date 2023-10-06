@@ -1,20 +1,36 @@
 databaseChangeLog:
   - changeSet:
-      id: Create roles table
-      author: Babek Beylerli,Nicat Mammadli
+      id: create-submodel-table
+      author: Babek Beylerli
       changes:
         - createTable:
-            tableName: roles
+            tableName: sub_model
             columns:
               - column:
                   name: id
-                  type: SERIAL
+                  type: INTEGER
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
                   name: name
                   type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+              - column:
+                  name: model_id
+                  type: INTEGER
                   constraints:
-                    unique: true
-            remarks: Role Table
+                    nullable: false
+              - foreignKey:
+                  baseColumnNames: model_id
+                  baseTableName: sub_model
+                  referencedColumnNames: id
+                  referencedTableName: model_entity
+                  onDelete: CASCADE

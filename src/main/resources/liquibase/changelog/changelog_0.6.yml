@@ -1,43 +1,33 @@
 databaseChangeLog:
   - changeSet:
       id: Create models table
-      author: Babek Beylerli, Nicat Mammadli
+      author: Babek Beylerli
       changes:
         - createTable:
             tableName: models
             columns:
               - column:
                   name: id
-                  type: SERIAL
+                  type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
-                  remarks: id of models
               - column:
-                  name: update_at
-                  type: timestamp
-                  defaultValue: now()
-                  remarks: When the record updated
+                  name: name
+                  type: varchar(40)
               - column:
                   name: created_at
                   type: timestamp
-                  defaultValue: now()
-                  remarks: When the record created
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
-                  name: name
-                  type: varchar
-                  constraints:
-                    nullable: false
-                  remarks: information about a model name
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
                   name: brand_id
-                  type: bigint
+                  type: int
                   constraints:
-                    - foreignKey:
-                        baseColumnNames: brand_id
-                        baseTableName: models
-                        referencedColumnNames: id
-                        referencedTableName: brands
-                        constraintName: fk_brands_to_models
-            remarks: Table to store information about models.
+                    foreignKeyName: FK_Model_Brand
+                    references: brands(id)
+                    onDelete: CASCADE
+

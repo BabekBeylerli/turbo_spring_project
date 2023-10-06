@@ -1,39 +1,29 @@
 databaseChangeLog:
   - changeSet:
       id: Create pictures table
-      author: Babek Beylerli, Nicat Mammadli
+      author: Babek Beylerli
       changes:
         - createTable:
             tableName: pictures
             columns:
               - column:
                   name: id
-                  type: SERIAL
+                  type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
-                  remarks: id of pictures
               - column:
-                  name: update_at
-                  type: timestamp
-                  defaultValueComputed: 'CURRENT_TIMESTAMP'
-                  remarks: When the record updated
+                  name: image
+                  type: text
+              - column:
+                  name: sort
+                  type: int
               - column:
                   name: created_at
                   type: timestamp
                   defaultValueComputed: 'CURRENT_TIMESTAMP'
-                  remarks: When the record created
               - column:
-                  name: sort
-                  type: bigint
-                  constraints:
-                    nullable: false
-                  remarks: Information about a sort correctly image
-              - column:
-                  name: product_id
-                  type: bigint
-                  constraints:
-                    nullable: false
-                  remarks: Foreign key reference to products table
-            remarks: Table to store information about images.
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+

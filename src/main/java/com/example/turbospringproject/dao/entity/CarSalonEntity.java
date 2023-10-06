@@ -29,8 +29,9 @@ public class CarSalonEntity {
     private String email;
     private String password;
     private String description;
-    private String description1;
-    private String description2;
+
+    private String activeTime;
+    private String remark;
     private String logo;
     private String image;
     private Integer productsCount;
@@ -39,7 +40,7 @@ public class CarSalonEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "car")
     private List<ProductEntity> product;
     @OneToMany(mappedBy = "carSalon",

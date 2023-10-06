@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: Create brands table
-      author: Babek Beylerli,Nicat Mammadli
+      author: Babek Beylerli
       changes:
         - createTable:
             tableName: brands
@@ -16,22 +16,10 @@ databaseChangeLog:
                   name: name
                   type: varchar(255)
               - column:
-                  name: createdAt
+                  name: created_at
                   type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
-                  name: updatedAt
+                  name: updated_at
                   type: timestamp
-              - addForeignKeyConstraint:
-                  baseTableName: model
-                  baseColumnNames: brand_id
-                  constraintName: fk_model_brand
-                  referencedTableName: brands
-                  referencedColumnNames: id
-                  onDelete: CASCADE
-              - addForeignKeyConstraint:
-                  baseTableName: product
-                  baseColumnNames: brand_id
-                  constraintName: fk_product_brand
-                  referencedTableName: brands
-                  referencedColumnNames: id
-                  onDelete: CASCADE
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'

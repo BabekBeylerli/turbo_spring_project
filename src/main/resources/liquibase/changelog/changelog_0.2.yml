@@ -1,85 +1,61 @@
 databaseChangeLog:
   - changeSet:
       id: Create car_salons table
-      author: Babek Beylerli, Nicat Mammadli
+      author: Babek Beylerli
       changes:
         - createTable:
             tableName: car_salons
             columns:
               - column:
                   name: id
-                  type: SERIAL
+                  type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
-                  remarks: id of car_salons
+              - column:
+                  name: tittle
+                  type: varchar(255)
+              - column:
+                  name: type
+                  type: varchar(255)
+                  defaultValue: 'SIMPLE'
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: active_time
+                  type: varchar(255)
+              - column:
+                  name: remark
+                  type: varchar(255)
+              - column:
+                  name: logo
+                  type: varchar(255)
+              - column:
+                  name: image
+                  type: varchar(255)
               - column:
                   name: products_count
-                  type: bigint
-                  defaultValue: 0
-                  remarks: count of products
+                  type: int
               - column:
                   name: view_number
-                  type: bigint
-                  defaultValue: 0
-                  remarks: count of views
+                  type: int
               - column:
-                  name: update_at
-                  type: timestamp
-                  defaultValue: now()
-                  remarks: When the record updated
+                  name: location
+                  type: varchar(255)
               - column:
                   name: created_at
                   type: timestamp
-                  defaultValue: now()
-                  remarks: When the record created
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
-                  name: description
-                  type: varchar
-                  remarks: provides general information about car salon
-              - column:
-                  name: active_time
-                  type: varchar
-                  remarks: shows working time
-              - column:
-                  name: remark
-                  type: varchar
-                  remarks: it keeps certain records
-              - column:
-                  name: email
-                  type: varchar
-                  constraints:
-                    unique: true
-                  remarks: save emails
-              - column:
-                  name: image
-                  type: text
-                  remarks: it keeps pictures
-              - column:
-                  name: location
-                  type: varchar
-                  remarks: it keeps location
-              - column:
-                  name: logo
-                  type: text
-                  remarks: it keeps logo
-              - column:
-                  name: password
-                  type: text
-                  constraints:
-                    nullable: false
-                  remarks: it keeps passwords
-              - column:
-                  name: title
-                  type: varchar
-                  constraints:
-                    nullable: false
-                  remarks: it keeps name car_salons
-              - column:
-                  name: type
-                  type: varchar
-                  constraints:
-                    nullable: false
-                  remarks: it keeps type
-            remarks: Table to store information about car_salons.
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+
+

@@ -1,41 +1,33 @@
 databaseChangeLog:
   - changeSet:
-      id: Create car_salon_phones table
-      author: Babek Beylerli, Nicat Mammadli
+      id: Create car_salons_phones table
+      author: Babek Beylerli
       changes:
         - createTable:
-            tableName: car_salon_phones
+            tableName: car_salons_phones
             columns:
               - column:
                   name: id
-                  type: SERIAL
+                  type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
-                  remarks: id of car_salon_phones
               - column:
-                  name: update_at
-                  type: timestamp
-                  defaultValue: now()
-                  remarks: When the record updated
+                  name: number
+                  type: varchar(255)
               - column:
                   name: created_at
                   type: timestamp
-                  defaultValue: now()
-                  remarks: When the record created
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
                   name: car_salon_id
-                  type: bigint
+                  type: int
                   constraints:
-                    - foreignKey:
-                        baseColumnNames: car_salon_id
-                        baseTableName: car_salon_phones
-                        referencedColumnNames: id
-                        referencedTableName: car_salons
-                        constraintName: fk_car_salon_phones_to_car_salons
-              - column:
-                  name: number
-                  type: varchar
-                  remarks: information about car_salons numbers
-            remarks: Table to store information about car_salon_phones.
+                    foreignKeyName: FK_CarSalonPhone_CarSalon
+                    references: car_salons(id)
+                    onDelete: CASCADE
+

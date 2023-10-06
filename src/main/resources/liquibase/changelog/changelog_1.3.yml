@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user_roles-table
+      author: Babek Beylerli
+      changes:
+        - createTable:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: INTEGER
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: role_id
+                  type: INTEGER
+                  constraints:
+                    primaryKey: true
+      databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Babek Beylerli
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: user_roles
+            baseColumnNames: user_id
+            referencedTableName: private_users
+            referencedColumnNames: id
+            constraintName: fk_user_roles_user_id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: user_roles
+            baseColumnNames: role_id
+            referencedTableName: roles
+            referencedColumnNames: id
+            constraintName: fk_user_roles_role_id
+            onDelete: CASCADE
+
+  # Daha fazla değişiklikler buraya eklenebilir.
+
+
+
+

@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import java.time.LocalDateTime;
 
 @Table(name = "pictures")
@@ -25,6 +24,5 @@ public class PictureEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
-
+    private LocalDateTime updatedAt;
 }

@@ -25,7 +25,7 @@ public class CityEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "city")
     private List<ProductEntity> product;
 }

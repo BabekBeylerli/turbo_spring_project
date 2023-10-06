@@ -19,8 +19,8 @@ public class CarSalonDto {
     private String tittle;
     private ECarSalon type;
     private String description;
-    private String description1;
-    private String description2;
+    private String activeTime;
+    private String remark;
     private String logo;
     private String image;
     private Integer productsCount;

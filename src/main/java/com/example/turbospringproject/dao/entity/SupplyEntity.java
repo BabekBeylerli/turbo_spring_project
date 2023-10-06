@@ -37,7 +37,7 @@ public class SupplyEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @OneToOne(mappedBy = "supply")
     private ProductEntity product;
 

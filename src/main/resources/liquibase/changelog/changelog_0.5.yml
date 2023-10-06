@@ -1,33 +1,26 @@
 databaseChangeLog:
   - changeSet:
       id: Create cities table
-      author: Babek Beylerli, Nicat Mammadli
+      author: Babek Beylerli
       changes:
         - createTable:
             tableName: cities
             columns:
               - column:
                   name: id
-                  type: SERIAL
+                  type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
-                  remarks: id of cities
               - column:
-                  name: update_at
-                  type: timestamp
-                  defaultValue: now()
-                  remarks: When the record updated
+                  name: name
+                  type: varchar(50)
               - column:
                   name: created_at
                   type: timestamp
-                  defaultValue: now()
-                  remarks: When the record created
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
-                  name: name
-                  type: varchar
-                  constraints:
-                    nullable: false
-                  remarks: information about a city name
-            remarks: Table to store information about cities.
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+

@@ -25,7 +25,7 @@ public class ModelEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "model",
               fetch=FetchType.EAGER)
     private List<ProductEntity> product;
@@ -33,6 +33,6 @@ public class ModelEntity {
             ,fetch = FetchType.EAGER)
     private List<SubModelEntity> subModel;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private BrandEntity brand;
 }

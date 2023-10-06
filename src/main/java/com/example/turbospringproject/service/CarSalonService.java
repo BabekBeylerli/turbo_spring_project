@@ -58,8 +58,8 @@ public class CarSalonService {
             existingCarSalon.setTittle(carSalonDto.getTittle());
             existingCarSalon.setType(carSalonDto.getType());
             existingCarSalon.setDescription(carSalonDto.getDescription());
-            existingCarSalon.setDescription1(carSalonDto.getDescription1());
-            existingCarSalon.setDescription2(carSalonDto.getDescription2());
+            existingCarSalon.setActiveTime(carSalonDto.getActiveTime());
+            existingCarSalon.setRemark(carSalonDto.getRemark());
             existingCarSalon.setLogo(carSalonDto.getLogo());
             existingCarSalon.setImage(carSalonDto.getImage());
             existingCarSalon.setProductsCount(carSalonDto.getProductsCount());

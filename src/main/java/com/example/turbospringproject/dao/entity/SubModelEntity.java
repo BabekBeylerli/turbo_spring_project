@@ -25,7 +25,7 @@ public class SubModelEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "subModel")
     private List<ProductEntity> product;
     @ManyToOne(cascade = CascadeType.MERGE)

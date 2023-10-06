@@ -1,37 +1,29 @@
 databaseChangeLog:
   - changeSet:
-      id: Create car_situation table
+      id: create-private-users-table
       author: Babek Beylerli
       changes:
         - createTable:
-            tableName: car_situation
+            tableName: private_users
             columns:
               - column:
                   name: id
-                  type: int
+                  type: INTEGER
                   autoIncrement: true
                   constraints:
                     primaryKey: true
               - column:
-                  name: stroke
-                  type: boolean
-                  defaultValue: false
+                  name: phone_number
+                  type: VARCHAR(10)
               - column:
-                  name: colored
-                  type: boolean
-                  defaultValue: false
+                  name: email
+                  type: VARCHAR(255)
               - column:
-                  name: accident
-                  type: boolean
-                  defaultValue: false
+                  name: balance
+                  type: DOUBLE
               - column:
-                  name: credit
-                  type: boolean
-                  defaultValue: false
-              - column:
-                  name: barter
-                  type: boolean
-                  defaultValue: false
+                  name: password
+                  type: VARCHAR(255)
               - column:
                   name: created_at
                   type: timestamp
@@ -40,3 +32,5 @@ databaseChangeLog:
                   name: updated_at
                   type: timestamp
                   defaultValueComputed: 'CURRENT_TIMESTAMP'
+
+

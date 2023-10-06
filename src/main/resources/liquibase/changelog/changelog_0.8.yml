@@ -1,44 +1,78 @@
 databaseChangeLog:
   - changeSet:
-      id: Create private_users table
-      author: Babek Beylerli,Nicat Mammadli
+      id: create-supply-table
+      author: Babek Beylerli
       changes:
         - createTable:
-            tableName: private_users
+            tableName: supplies
             columns:
               - column:
                   name: id
-                  type: SERIAL
+                  type: INTEGER
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
-                  name: phone_number
-                  type: VARCHAR(10)
+                  name: alloy_wheels
+                  type: BOOLEAN
+                  defaultValueBoolean: false
               - column:
-                  name: email
-                  type: VARCHAR(255)
-                  constraints:
-                    unique: true
+                  name: abs
+                  type: BOOLEAN
+                  defaultValueBoolean: false
               - column:
-                  name: balance
-                  type: DOUBLE
+                  name: hatch
+                  type: BOOLEAN
+                  defaultValueBoolean: false
               - column:
-                  name: password
-                  type: VARCHAR(255)
-                  constraints:
-                  nullable: false;
+                  name: rain_sensor
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: central_locking
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: parking_radar
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: air_conditioning
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: seat_heating
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: leather_salon
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: xenon_lamps
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: rear_view_camera
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: side_curtains
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+              - column:
+                  name: seat_ventilation
+                  type: BOOLEAN
+                  defaultValueBoolean: false
               - column:
                   name: created_at
-                  type: TIMESTAMP
-                  constraints:
-                    defaultValue: CURRENT_TIMESTAMP
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
               - column:
                   name: updated_at
-                  type: TIMESTAMP
-                  constraints:
-                    defaultValue: CURRENT_TIMESTAMP
-              - column:
-                  name: roles
-                  type: ARRAY
-            remarks: User Table
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+              - uniqueConstraint:
+                  name: unique_id
+                  columnNames:
+                    - id

@@ -55,7 +55,7 @@ public class ProductEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
     @ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id")
     private ModelEntity model;
