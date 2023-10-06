@@ -44,7 +44,7 @@ public class CarSalonEntity {
     @OneToMany(mappedBy = "car")
     private List<ProductEntity> product;
     @OneToMany(mappedBy = "carSalon",
-            cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+            cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<CarSalonPhoneEntity> phones;
 
 }

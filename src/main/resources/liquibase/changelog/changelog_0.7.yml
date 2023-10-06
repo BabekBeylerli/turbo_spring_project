@@ -26,4 +26,10 @@ databaseChangeLog:
                   name: updated_at
                   type: timestamp
                   defaultValueComputed: 'CURRENT_TIMESTAMP'
-
+              - column:
+                  name: product_id
+                  type: int
+                  constraints:
+                    foreignKeyName: FK_Picture_Product
+                    references: products(id)
+                    onDelete: CASCADE

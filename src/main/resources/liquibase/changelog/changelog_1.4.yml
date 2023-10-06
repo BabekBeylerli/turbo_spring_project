@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-products-pictures-table
+      author: Babek Beylerli
+      changes:
+        - createTable:
+            tableName: products_pictures
+            columns:
+              - column:
+                  name: product_entity_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: pictures_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+            foreignKeyConstraints:
+              - foreignKeyConstraint:
+                  baseColumnNames: product_entity_id
+                  baseTableName: products_pictures
+                  referencedColumnNames: id
+                  referencedTableName: products
+              - foreignKeyConstraint:
+                  baseColumnNames: pictures_id
+                  baseTableName: products_pictures
+                  referencedColumnNames: id
+                  referencedTableName: pictures
