@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create car_salon_car_salon_phone table
+      author: Babek Beylerli
+      changes:
+        - createTable:
+            tableName: car_salon_car_salon_phone
+            columns:
+              - column:
+                  name: car_salon_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: car_salon_phone_id
+                  type: int
+                constraints:
+                  primaryKey: true
+            foreignKeyConstraints:
+              - foreignKeyConstraint:
+                      baseColumnNames: car_salon_id
+                      baseTableName: car_salon_car_salon_phone
+                      referencedColumnNames: id
+                      referencedTableName: car_salons
+              - foreignKeyConstraint:
+                      baseColumnNames: car_salon_phone_id
+                      baseTableName: car_salon_car_salon_phone
+                      referencedColumnNames: id
+                      referencedTableName: car_salons_phones
