@@ -32,7 +32,7 @@ public class AuthController {
         return ResponseEntity.ok(authService.authenticate(authRequestDto));
     }
     @DeleteMapping("/user/{userId}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public void deleteUser(@PathVariable Integer userId){
         authService.deleteUser(userId);
     }

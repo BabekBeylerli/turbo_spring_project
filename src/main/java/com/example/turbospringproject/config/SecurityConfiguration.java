@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/v1/auth/register").permitAll()
                                 .requestMatchers("/v1/auth/login").permitAll()
-                                .requestMatchers("/v1/auth/user/**").hasRole("USER")
+                                .requestMatchers("/v1/auth/user/**").hasAnyRole("USER","ADMIN")
                                 .requestMatchers("/v1/products/public/**").permitAll()
                                 .requestMatchers("/v1/carSalons/public/**").permitAll()
                                 .requestMatchers("/v1/products/user/**").hasAnyRole("USER","ADMIN")

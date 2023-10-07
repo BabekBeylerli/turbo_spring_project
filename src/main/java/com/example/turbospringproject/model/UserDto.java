@@ -17,8 +17,6 @@ import java.util.Set;
 @Builder
 public class UserDto {
     private String phoneNumber;
-    @Min(value=0)
     private Double balance;
-    @Email(message = "Email should be valid.")
     private String email;
 }

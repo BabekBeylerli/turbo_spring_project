@@ -4,5 +4,5 @@ public enum ProductActiveStatus {
     PENDING,
     REJECT,
     ACTIVE,
-    EXPIRED,
+    EXPIRED
 }

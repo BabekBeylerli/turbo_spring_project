@@ -18,7 +18,6 @@ import java.util.List;
 @Data
 @Builder
 public class BrandDto {
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Should contain only alphabetic characters.")
     private String name;
     private List<ModelDto> model;
 

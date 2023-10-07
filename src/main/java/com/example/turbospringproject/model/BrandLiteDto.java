@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BrandLiteDto {
     private Integer id;
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Should contain only alphabetic characters.")
     private String name;
 }
